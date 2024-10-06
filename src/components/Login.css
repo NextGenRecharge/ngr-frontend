@@ -1,0 +1,164 @@
+.container {
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #e3e3e3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #7966ff;
+  padding-bottom: 10px;
+}
+
+.logoButton {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+/* Box layout */
+.box-container {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.left-box {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.right-box {
+  width: 60%;
+  height: calc(280px + 230px);
+  background-color: #c40b0b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.box1, .box2 {
+  border-radius: 10px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.box1 {
+  height: 230px;
+}
+
+.box2 {
+  padding: 20px;
+  background-color: #541069;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 230px;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 350px;
+}
+
+/* Image Grid inside Box 1 */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+.image-item img {
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.image-item span {
+  margin-top: 5px;
+  color: black;
+  font-size: 14px;
+}
+
+.more {
+  cursor: pointer;
+  color: black;
+}
+
+/* More box that appears when clicked */
+.more-box {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.more-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.more-content img {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+/* Styling for the image-item, image-circle, and the More button */
+.image-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 7px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.image-circle img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
