@@ -5,10 +5,13 @@
         "noImplicitAny": true,
         "sourceMap": true,
         "allowJs": true,
-        "outDir": "app"
+        "outDir": "app",
+        "jsx": "react",
+        "esModuleInterop": true // Add this line
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
+        "src/components/core/CheckBox/CheckBox.tsx"
     ],
     "exclude": [
         "node_modules"
