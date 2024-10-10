@@ -59,7 +59,8 @@
   border-radius: 10px;
 }
 
-.box1, .box2 {
+.box1,
+.box2 {
   border-radius: 10px;
   background-color: #ffffff;
   display: flex;
@@ -74,13 +75,11 @@
 
 .box2 {
   padding: 20px;
-  background-color: #541069;
-  color: white;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 230px;
+  /* height: 280px; */
 }
 
 .login-form {

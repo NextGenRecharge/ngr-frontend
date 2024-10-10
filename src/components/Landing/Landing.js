@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
 import "./Login.css";
-import logo from "../asset/logo.png";
-import recharge from "../asset/recharge.png";
-import dth from "../asset/dth.png";
-import Landline from "../asset/Landline.png";
-import Brodband from "../asset/Brodband.png";
-import Fasttag from "../asset/Fasttag.png";
-import Electricity from "../asset/Electricity.png";
-import Cylinder from "../asset/Cylinder.png";
-import more from "../asset/more.png";
+import logo from "../../asset/logo.png";
+import recharge from "../../asset/recharge.png";
+import dth from "../../asset/dth.png";
+import Landline from "../../asset/Landline.png";
+import Brodband from "../../asset/Brodband.png";
+import Fasttag from "../../asset/Fasttag.png";
+import Electricity from "../../asset/Electricity.png";
+import Cylinder from "../../asset/Cylinder.png";
+import more from "../../asset/more.png";
+import MobileRecharge from "../MobileRecharge/MobileRecharge";
 
-const Login = () => {
+const Landing = () => {
   const [showMore, setShowMore] = useState(false);
 
   const handleMoreClick = () => {
     setShowMore(!showMore); // Toggle visibility of the more box
   };
-
 
   return (
     <div className="container">
@@ -81,6 +81,7 @@ const Login = () => {
             </div>
           </div>
           <div className="box2">
+            <MobileRecharge />
           </div>
         </div>
         <div className="right-box">Box 3</div>
@@ -89,4 +90,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Landing;
