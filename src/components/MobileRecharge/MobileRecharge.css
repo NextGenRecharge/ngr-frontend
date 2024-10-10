@@ -1,0 +1,71 @@
+/* Container for the entire form */
+.mobile-recharge-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the form elements */
+.mobile-recharge-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.select-plan:focus,
+.operator:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px var(--primary) !important;
+}
+
+/* Styles for the input fields */
+.mobile-recharge-container input[type="text"],
+.mobile-recharge-container input[type="tel"],
+.mobile-recharge-container input[type="number"],
+.mobile-recharge-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Focus styles for the input fields */
+.mobile-recharge-container input[type="text"]:focus,
+.mobile-recharge-container input[type="tel"]:focus,
+.mobile-recharge-container input[type="number"]:focus,
+.mobile-recharge-container select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+/* Styles for the submit button */
+.mobile-recharge-container button[type="submit"] {
+    padding: 10px;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the submit button */
+.mobile-recharge-container button[type="submit"]:hover {
+    background-color: color-mix(var(--primary), var(--tertiary), 50%);
+}
+
+/* Error message styles */
+.mobile-recharge-container .error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: -8px;
+    margin-bottom: 10px;
+}
