@@ -1,9 +1,9 @@
 .container {
   width: 100%;
-  max-width: 1220px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #e3e3e3;
+  background-color: #0b184c;
   display: flex;
   flex-direction: column;
   justify-content: center;
