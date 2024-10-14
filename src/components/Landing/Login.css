@@ -40,6 +40,7 @@
   display: flex;
   gap: 12px;
   width: 100%;
+  align-items: stretch; /* Ensure equal height */
 }
 
 .left-box {
@@ -51,16 +52,15 @@
 
 .right-box {
   width: 60%;
-  height: calc(280px + 230px);
-  background-color: #c40b0b;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  padding: 20px;
+  background-color: #ffffff; /* Removed red background */
 }
 
-.box1,
-.box2 {
+.box1, .box2 {
   border-radius: 10px;
   background-color: #ffffff;
   display: flex;
@@ -70,21 +70,25 @@
 }
 
 .box1 {
-  height: 230px;
+  flex: 1;
 }
 
 .box2 {
+  flex: 1;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  /* height: 280px; */
 }
 
-.login-form {
-  width: 100%;
-  max-width: 350px;
+/* Ensure the image fills the box, maintaining aspect ratio */
+.right-box img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* Ensures the image fits properly without stretching */
 }
 
 /* Image Grid inside Box 1 */
@@ -114,7 +118,6 @@
   color: black;
 }
 
-/* More box that appears when clicked */
 .more-box {
   margin-top: 20px;
   padding: 20px;
@@ -136,7 +139,6 @@
   cursor: pointer;
 }
 
-/* Styling for the image-item, image-circle, and the More button */
 .image-item {
   text-align: center;
   display: flex;
@@ -160,4 +162,41 @@
   width: 24px;
   height: 24px;
   object-fit: contain;
+}
+
+.image-item {
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  transition: border 0.3s ease;
+}
+
+.image-item img {
+  width: 50px;
+  height: 50px;
+}
+
+.image-item span {
+  display: block;
+  margin-top: 5px;
+}
+
+.image-item.active {
+  border: 2px solid #7966FF;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.more .image-circle {
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
 }
