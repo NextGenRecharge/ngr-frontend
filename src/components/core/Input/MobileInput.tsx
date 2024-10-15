@@ -16,8 +16,8 @@ const countryCodes: CountryCode[] = [
 interface MobileInputProps {
     selectedCountryCode: string;
     mobileNumber: string;
-    onCountryCodeChange: (code: string) => void;
-    onMobileNumberChange: (number: string) => void;
+    onCountryCodeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    onMobileNumberChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     register: any;
     className?: string;
 }
@@ -30,21 +30,22 @@ const MobileInput: React.FC<MobileInputProps> = ({
     register,
     className = ''
 }) => {
-    const handleCountryCodeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        onCountryCodeChange(event.target.value);
-    };
 
     const handleMobileNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        onMobileNumberChange(event.target.value);
+        const mobileRegex = /^[0-9\b]+$/;
+        if ((mobileRegex.test(event.target.value) || event.target.value === "") && event.target.value.length < 11) {
+            console.log(mobileRegex.test(event.target.value))
+            onMobileNumberChange(event);
+        }
     };
 
     return (
         <div className={`mobile-input-container ${className}`}>
             <select
-                value={selectedCountryCode}
-                onChange={handleCountryCodeChange}
+                name='countryCode'
                 className="country-code-select"
                 {...register('countryCode', { required: 'Country code is required' })}
+                value={selectedCountryCode}
             >
                 {countryCodes.map((country) => (
                     <option key={country.code} value={country.code}>
@@ -54,12 +55,13 @@ const MobileInput: React.FC<MobileInputProps> = ({
                 ))}
             </select>
             <input
+                name='phoneNumber'
                 type="tel"
-                value={mobileNumber}
                 onChange={handleMobileNumberChange}
                 className="mobile-number-input"
                 placeholder="Enter mobile number"
-                {...register('phoneNumber', { required: 'Phone number is required' })}
+                // {...register('phoneNumber', { required: 'Phone number is required' })}
+                value={mobileNumber}
             />
         </div>
     );
