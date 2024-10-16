@@ -33,6 +33,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
                         {...(option.value !== undefined ? { value: option.value } : {})}
                         {...(selectedValue !== undefined ? { checked: selectedValue === option.value } : {})}
                         onChange={() => onChange?.(option.value)}
+                        {...register?.(name, { required: 'Please select an option' })}
                     />
                     {labelPosition === 'right' && option.label}
                 </label>
