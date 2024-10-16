@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 import "./Login.css";
 import logo from "../../asset/logo.png";
 import recharge from "../../asset/recharge.png";
@@ -10,15 +10,22 @@ import Fasttag from "../../asset/Fasttag.png";
 import Electricity from "../../asset/Electricity.png";
 import Cylinder from "../../asset/Cylinder.png";
 import more from "../../asset/more.png";
+import BannerMobile from "../../asset/BannerMobile.png";
 import MobileRecharge from "../MobileRecharge/MobileRecharge";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import SimpleSlider from "./AboutUsSlider";
+import SimpleSlider from "./AboutUsSlider";import Dth from "../Dth/Dth";
+
 const Landing = () => {
+  const [selectedService, setSelectedService] = useState("Recharge"); // Default to "Recharge"
   const [showMore, setShowMore] = useState(false);
 
   const handleMoreClick = () => {
     setShowMore(!showMore); // Toggle visibility of the more box
+  };
+
+  const handleServiceClick = (service) => {
+    setSelectedService(service); // Update the selected service
   };
 
   return (
@@ -46,31 +53,52 @@ const Landing = () => {
         <div className="left-box">
           <div className="box1">
             <div className="image-grid">
-              <div className="image-item">
+              <div
+                className={`image-item ${selectedService === "Recharge" ? "active" : ""}`}
+                onClick={() => handleServiceClick("Recharge")}
+              >
                 <img src={recharge} alt="Recharge" />
                 <span>Recharge</span>
               </div>
-              <div className="image-item">
+              <div
+                className={`image-item ${selectedService === "DTH" ? "active" : ""}`}
+                onClick={() => handleServiceClick("DTH")}
+              >
                 <img src={dth} alt="DTH" />
                 <span>DTH</span>
               </div>
-              <div className="image-item">
+              <div
+                className={`image-item ${selectedService === "Landline" ? "active" : ""}`}
+                onClick={() => handleServiceClick("Landline")}
+              >
                 <img src={Landline} alt="Landline" />
                 <span>Landline</span>
               </div>
-              <div className="image-item">
+              <div
+                className={`image-item ${selectedService === "Broadband" ? "active" : ""}`}
+                onClick={() => handleServiceClick("Broadband")}
+              >
                 <img src={Brodband} alt="Broadband" />
                 <span>Broadband</span>
               </div>
-              <div className="image-item">
+              <div
+                className={`image-item ${selectedService === "Fasttag" ? "active" : ""}`}
+                onClick={() => handleServiceClick("Fasttag")}
+              >
                 <img src={Fasttag} alt="Fasttag" />
                 <span>Fasttag</span>
               </div>
-              <div className="image-item">
+              <div
+                className={`image-item ${selectedService === "Electricity" ? "active" : ""}`}
+                onClick={() => handleServiceClick("Electricity")}
+              >
                 <img src={Electricity} alt="Electricity" />
                 <span>Electricity</span>
               </div>
-              <div className="image-item">
+              <div
+                className={`image-item ${selectedService === "Cylinder" ? "active" : ""}`}
+                onClick={() => handleServiceClick("Cylinder")}
+              >
                 <img src={Cylinder} alt="Cylinder" />
                 <span>Cylinder</span>
               </div>
@@ -83,10 +111,14 @@ const Landing = () => {
             </div>
           </div>
           <div className="box2">
-            <MobileRecharge />
+            {selectedService === "Recharge" && <MobileRecharge />}
+            {selectedService === "DTH" && <Dth />}
+            {/* You can add more conditionals here for other services if needed */}
           </div>
         </div>
-        <div className="right-box">Box 3</div>
+        <div className="right-box">
+          <img src={BannerMobile} alt="Banner" className="banner-image" />
+        </div>
 
       </div>
       <div className="about-us">
