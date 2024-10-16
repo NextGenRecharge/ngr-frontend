@@ -10,7 +10,7 @@ import Fasttag from "../../asset/Fasttag.png";
 import Electricity from "../../asset/Electricity.png";
 import Cylinder from "../../asset/Cylinder.png";
 import more from "../../asset/more.png";
-import BannerMobile from "../../asset/BannerMobile.png"
+import BannerMobile from "../../asset/BannerMobile.png";
 import MobileRecharge from "../MobileRecharge/MobileRecharge";
 import Dth from "../Dth/Dth";
 
@@ -115,7 +115,7 @@ const Landing = () => {
           </div>
         </div>
         <div className="right-box">
-        <img src={BannerMobile} alt="Electricity" />
+          <img src={BannerMobile} alt="Banner" className="banner-image" />
         </div>
       </div>
     </div>

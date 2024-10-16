@@ -74,12 +74,12 @@ const MobileRecharge = () => {
                     <PlanInput register={register} />
                     {errors.plan && <p className=" text-sm text-red-600">{errors.plan.message}</p>}
                 </div>
-                <button type="submit" className="w-full p-2 mt-4 bg-primary text-secondary rounded">
+                <button type="submit" className="w-full p-2 mt-1 bg-primary text-secondary rounded">
                     Submit
                 </button>
             </form>
         </div>
-    );
+    );  
 };
 
 export default MobileRecharge;
