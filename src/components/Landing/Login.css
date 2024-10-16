@@ -161,3 +161,178 @@
   height: 24px;
   object-fit: contain;
 }
+
+.about-us {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.title-contianer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-contianer .dash {
+  flex-grow: 1;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+}
+
+.title-contianer h2 {
+  font-size: 24px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.about-us-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.about-us-details p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+  /* make center align paragraph */
+  text-align: center;
+
+}
+
+.slider-container {
+  width: 100%;
+  padding: auto;
+}
+
+
+/* about us css */
+
+.about-contianer {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.about-contianer .dash {
+  flex-grow: 1;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+}
+
+.about-contianer h2 {
+  font-size: 24px;
+  color: #333;
+  white-space: nowrap;
+}
+
+
+.about-one {
+  display: flex;
+  width: 500px;
+  margin-bottom: 23px;
+  text-align: left;
+
+  padding: 17px;
+
+}
+
+.about-two {
+  display: flex;
+  text-align: left;
+
+  width: 500px;
+  justify-content: flex-end;
+  margin-left: 50%;
+  padding: 17px;
+  text-wrap: wrap;
+}
+
+.mob-rch-container {
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+
+}
+
+.purple-bg {
+  width: 50%;
+  background-color: purple
+}
+
+.mob-details {
+  width: 50%;
+}
+
+.mob-rch-container h2 {
+  font-size: 24px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.mob-rch-container .dash {
+  flex-grow: 1;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+}
+
+.mob-rch-title {
+  text-align: start;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mob-rch-info {
+  text-align: left;
+}
+
+.why-nxt-title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+}
+
+.why-nxt-title .dash {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #333;
+}
+
+
+.why-nxt-title h2 {
+  font-size: 24px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.why-nxt-info {
+  width: 90%;
+  text-align: left;
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+
+}
+
+.footer-container .dash {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #333;
+}
