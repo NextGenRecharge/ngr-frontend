@@ -12,7 +12,9 @@ import Cylinder from "../../asset/Cylinder.png";
 import more from "../../asset/more.png";
 import BannerMobile from "../../asset/BannerMobile.png";
 import MobileRecharge from "../MobileRecharge/MobileRecharge";
-import Dth from "../Dth/Dth";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import SimpleSlider from "./AboutUsSlider";import Dth from "../Dth/Dth";
 
 const Landing = () => {
   const [selectedService, setSelectedService] = useState("Recharge"); // Default to "Recharge"
@@ -27,7 +29,7 @@ const Landing = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container pb-6">
       <div className="logo-container">
         <div className="logoButton">
           <img src={logo} alt="Company Logo" className="logo" />
@@ -116,6 +118,78 @@ const Landing = () => {
         </div>
         <div className="right-box">
           <img src={BannerMobile} alt="Banner" className="banner-image" />
+        </div>
+
+      </div>
+      <div className="about-us">
+        <div className="title-contianer">
+          <div className="dash"></div>
+          <h2 className="title">Who Are We</h2>
+          <div className="dash"></div>
+        </div>
+        <div className="about-us-details">
+          <p>
+            At NextGen Solution, we offer a comprehensive online digital platform for all your prepaid mobile recharge and bill payment needs. From prepaid recharges and postpaid bill payments to DTH, electricity, landline, gas, water, and broadband services, our platform covers it all, providing a seamless and hassle-free experience.
+          </p>
+        </div>
+        <div className="slider-container">
+          <SimpleSlider />
+        </div>
+
+        {/* about us */}
+
+        <div className="about-contianer">
+          <div className="dash"></div>
+          <h2 className="title">About Us</h2>
+          <div className="dash"></div>
+        </div>
+        <div className="nextgen-about-details">
+          <div className="about-one">
+            <p>
+              NextGen Solution is an emerging digital platform designed to be your one-stop destination for all utility payments and mobile recharges. As we embark on our journey, our mission is to provide a seamless and convenient experience for prepaid mobile recharges, bill payments, and various utility services.
+            </p>
+          </div>
+          <div className="about-two">
+            <p>
+              To kick off our business with added value, we are excited to offer an *exclusive up to 39% discount on prepaid recharge subscriptions*, helping you save more while staying connected. At NextGen Solution, we are committed to delivering reliable, cost-effective services, making us your future go-to platform for all your utility needs.
+            </p>
+          </div>
+        </div>
+
+        {/* Mobile container */}
+        <div className="mob-rch-container">
+          <div className="purple-bg"></div>
+          <div className="mob-details">
+            <div className="mob-rch-title">
+              <h2>Mobile Reacharge</h2>
+              <div className="dash"></div>
+            </div>
+            <div className="mob-rch-info">
+              <p>At NextGen Solution, we provide online prepaid mobile recharges and bill payments for all major telecom operators. We offer a wide range of talk time and data plans, ensuring you can easily find the best plan to suit your needs while saving time and money. With NextGen Solution, you can recharge and pay bills across all telecom operators seamlessly using Net Banking, Debit Card, Credit Card, UPI, or Wallet</p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Why next gen container */}
+        <div className="why-nxt-container">
+          <div className="why-nxt-title">
+            <h2>Why Should You Use NextGen Solution </h2>
+            <div className="dash"></div>
+          </div>
+          <div className="why-nxt-info">
+            <p>NextGen Solution is committed to delivering reliable utility services through a user-friendly digital platform, prioritizing convenience and efficiency. Our goal is to ensure a seamless experience for all your mobile recharges and bill payments, making us your trusted choice for all utility needs, time and again.</p>
+          </div>
+        </div>
+
+        {/* Footer container */}
+
+        <div className="footer-container">
+          <div className="dash"></div>
+          <div className="logo-image">
+            <img src={logo} alt="Company Logo" className="logo" />
+          </div>
+          <div className="dash"></div>
         </div>
       </div>
     </div>
