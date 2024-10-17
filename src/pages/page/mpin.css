@@ -1,0 +1,22 @@
+.mpin-container{
+    height: 100vh;
+    width: 100vw;
+    background-color: orange;
+    display: flex;
+    gap:3%;
+}
+
+.mpin-set{
+    width:50%;
+    height: 100%;
+    padding:10px;
+}
+
+.mpin-header{
+    display: flex;
+
+}
+.mpin-side-image{
+    width: 50%;
+    height: 100%;
+}
