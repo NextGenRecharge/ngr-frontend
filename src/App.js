@@ -4,6 +4,7 @@ import SignUp from './components/SignUp/SignUp';
 import Login from './components/Landing/Landing';
 import ForgotPassword from './components/ForgotPassword';
 import Dashboard from './components/Dashboard/Home';
+import { MPIN } from './pages/page/mpin';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/dashboard" element={user ? <Dashboard user={user} /> : <Navigate to="/login" />} />
+        <Route path='/mpin' element={<MPIN />} />
       </Routes>
     </Router>
   );
