@@ -375,3 +375,74 @@
   width: 50px;
   height: 50px;
 }
+
+.container2 {
+  width: 100%; /* Adjust width to full view */
+  max-width: 1400px; /* Or set max-width if you want to limit it */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 0 20px; /* Add padding for inner spacing */
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  background-color: antiquewhite;
+}
+
+.about-us {
+  padding: 20px 0;
+}
+
+.title-contianer {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.dash {
+  width: 50px;
+  height: 4px;
+  background-color: #000;
+  margin: 10px auto;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.about-us-details, .nextgen-about-details, .mob-details, .why-nxt-info {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.slider-container {
+  margin-top: 20px;
+}
+
+.mob-rch-container, .why-nxt-container, .footer-container {
+  padding: 20px 0;
+}
+
+.purple-bg {
+  background-color: #6a1b9a; /* Example color */
+  height: 200px; /* Adjust height as needed */
+}
+
+.mob-rch-title, .why-nxt-title {
+  text-align: center;
+}
+
+.mob-rch-info, .why-nxt-info {
+  margin-top: 20px;
+}
+
+.footer-container {
+  text-align: center;
+}
+
+.logo-image {
+  display: inline-block;
+}
+
+.logo {
+  max-width: 150px; /* Adjust logo size */
+}
+

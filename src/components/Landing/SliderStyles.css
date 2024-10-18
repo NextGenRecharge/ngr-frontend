@@ -1,0 +1,72 @@
+/* Slider Container Styling */
+.slick-slider {
+    position: relative;
+    margin: 20px auto;
+    width: 80%; /* Adjust the slider width */
+  }
+  
+  /* Slide Content Styling */
+  .slick-slide {
+    padding: 0 10px; /* Add space between the slides */
+  }
+  
+  .slide-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5; /* Slide background */
+    height: 300px; /* Height of each slide */
+    font-size: 24px;
+    color: #333;
+    border: 1px solid #ddd; /* Slide border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    transition: all 0.3s ease-in-out;
+    height: 300px;
+  }
+  
+  .slide-content:hover {
+    transform: scale(1.05); /* Scale up on hover */
+  }
+  
+  /* Arrow Styles */
+  .slick-prev, .slick-next {
+    background-color: #333; /* Arrow background */
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+  
+  .slick-prev:hover, .slick-next:hover {
+    background-color: #555; /* Darker on hover */
+  }
+  
+  .slick-prev:before, .slick-next:before {
+    font-size: 20px; /* Adjust arrow icon size */
+    color: white;
+  }
+  
+  /* Dots Styling */
+  .slick-dots li button:before {
+    font-size: 10px;
+    color: #ddd; /* Inactive dot color */
+  }
+  
+  .slick-dots li.slick-active button:before {
+    color: #333; /* Active dot color */
+    font-size: 12px;
+  }
+  
+  .slick-dots {
+    bottom: -30px; /* Adjust dot position */
+  }
+  
+  .slick-dots li {
+    margin: 0 5px;
+  }
+  
