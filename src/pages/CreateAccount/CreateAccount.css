@@ -13,3 +13,7 @@
         padding-right: 10px;
     }
 }
+
+.form-container {
+    max-width: 360px;
+}
