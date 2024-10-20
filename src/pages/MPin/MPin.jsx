@@ -36,11 +36,11 @@ const MPin = () => {
                     description="SET YOUR 4 DIGIT M-PIN"
                 >
                     <div className="w-full flex justify-between flex-col">
-                        <div className="w-full flex flex-col justify-center gap-2">
+                        <div className="w-full flex flex-col justify-center space-y-4">
                             <MPININPUT length={4} onChange={(value) => handlePinChange("set", value)} />
                             <MPININPUT length={4} onChange={(value) => handlePinChange("confirm", value)} />
                         </div>
-                        <button className="w-full p-2 mt-1 bg-primary text-secondary rounded" type="submit">CONFIRM</button>
+                        <button className="btn mt-3" type="submit">CONFIRM</button>
                     </div>
                 </TitleBanner>
             </form>
