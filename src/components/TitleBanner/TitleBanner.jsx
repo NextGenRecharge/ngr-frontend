@@ -12,8 +12,8 @@ const TitleBanner = (props) => {
                     <div className="title-banner-illustration">
                         {icon && icon}
                     </div>
-                    <h2 className='mt-3 text-2xl text-primary text-left w-full'>{subtitle}</h2>
-                    <p className='w-full'>{description}</p>
+                    <h2 className='mt-2 text-2xl text-primary text-left w-full'>{subtitle}</h2>
+                    <div className='text-gray-600 mb-2 w-full'>{description}</div>
                     <div className="body-container w-full">
                         {props.children}
                     </div>
