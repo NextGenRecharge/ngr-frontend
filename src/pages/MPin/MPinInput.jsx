@@ -137,11 +137,12 @@ export const PinForm = () => {
 };
 
 
-export const MPININPUT = () => {
+export const MPININPUT = ({ length = 4, onChange = () => { } }) => {
     return (
         <OTPInput
-            maxLength={4}
+            maxLength={length}
             containerClassName="group flex items-center has-[:disabled]:opacity-30"
+            onChange={onChange}
             render={({ slots }) => (
                 <>
                     <div className="flex">
