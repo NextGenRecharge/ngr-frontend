@@ -16,7 +16,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SimpleSlider from "./AboutUsSlider";
 import Dth from "../Dth/Dth";
-
+import Footer from "../Footer/Footer";
 const Landing = () => {
   const [selectedService, setSelectedService] = useState("Recharge"); // Default to "Recharge"
   const [showMore, setShowMore] = useState(false);
@@ -137,7 +137,7 @@ const Landing = () => {
           </div>
         </div>
       </div>
-      <div  className="container2 pb-6">
+      <div className="container2 pb-6">
         <div className="about-us">
           <div className="title-contianer">
             <div className="dash"></div>
@@ -226,17 +226,10 @@ const Landing = () => {
               </p>
             </div>
           </div>
-
-          {/* Footer container */}
-
-          <div className="footer-container">
-            <div className="dash"></div>
-            <div className="logo-image">
-              <img src={logo} alt="Company Logo" className="logo" />
-            </div>
-            <div className="dash"></div>
-          </div>
         </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </>
   );
