@@ -41,19 +41,7 @@ const MobileInput: React.FC<MobileInputProps> = ({
 
     return (
         <div className={`mobile-input-container ${className}`}>
-            <select
-                name='countryCode'
-                className="country-code-select"
-                {...register('countryCode', { required: 'Country code is required' })}
-                value={selectedCountryCode}
-            >
-                {countryCodes.map((country) => (
-                    <option key={country.code} value={country.code}>
-                        {/* {country.name} */}
-                        {country.code}
-                    </option>
-                ))}
-            </select>
+            <span className="country-code-select flex justify-center items-center" >+91</span>
             <input
                 name='phoneNumber'
                 type="tel"
