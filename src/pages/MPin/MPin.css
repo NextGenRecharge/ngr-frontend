@@ -1,0 +1,57 @@
+.mpin-container {
+    height: 100vh;
+    width: 100vw;
+    /* background-color: orange; */
+    display: flex;
+    gap: 3%;
+}
+
+.mpin-set {
+    width: 50%;
+    height: 80%;
+    padding: 30px;
+}
+
+.mpin-header {
+    display: flex;
+
+}
+
+.mpin-side-image {
+    width: 50%;
+    height: 100%;
+    width: 50%;
+    height: 80%;
+    padding: 10px;
+}
+
+.mpin-banner {
+    height: 90%;
+    width: 65%;
+}
+
+.mpin-title h2 {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.click-here-link {
+    color: var(--primary);
+}
+
+.continue-btn-cont {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.continue-btn-cont .continue-btn {
+    width: 100%;
+
+}
+
+.flex {
+    display: flex;
+    gap: 7px;
+    /* border-radius: 5px; */
+}
