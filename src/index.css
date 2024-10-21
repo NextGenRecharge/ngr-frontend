@@ -9,3 +9,23 @@
   --tertiary: #282828;
   --quaternary: #f8f8f8;
 }
+
+@font-face {
+  font-family: Montserrat Regular, sans-serif;
+  src: url('./font/Montserrat-Regular.ttf');
+}
+
+@layer utilities {
+  .btn {
+    @apply p-2 mt-1 bg-primary text-secondary rounded;
+  }
+
+  .input {
+    height: 35px;
+    @apply outline-none rounded-lg border border-gray-500
+  }
+
+  .input:focus {
+    border: 2px solid var(--primary);
+  }
+}

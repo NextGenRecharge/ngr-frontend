@@ -1,0 +1,19 @@
+@media screen and (max-width: 380px) {
+    .mpin-svg {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .form-container {
+        width: 100% !important;
+    }
+
+    .account-succesful-container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+.form-container {
+    max-width: 360px;
+}

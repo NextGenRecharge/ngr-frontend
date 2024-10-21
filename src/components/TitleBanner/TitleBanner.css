@@ -1,0 +1,38 @@
+.title-banner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+}
+
+.title-banner-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+    max-width: 600px;
+}
+
+.title-banner-container h1 {
+    margin-bottom: 20px;
+}
+
+.title-banner-illustration img {
+    max-width: 100%;
+    margin-bottom: 30px;
+}
+
+.title-banner-container p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.body-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}

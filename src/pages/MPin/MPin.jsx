@@ -1,61 +1,49 @@
-import logo from "../../asset/logo.png";
-import bannerMPIN from '../../asset/BannerMPIN.png'
 import './MPin.css'
 import { MPININPUT } from "./MPinInput";
+import TitleBanner from "../../components/TitleBanner/TitleBanner";
+import { useForm } from "react-hook-form";
+import SetMPinBg from "../../asset/icons/SetMPinBg";
+import { useNavigate } from "react-router-dom";
 
 const MPin = () => {
+    const { handleSubmit, setValue } = useForm({
+        defaultValues: {
+            set: '',
+            confirm: ''
+        }
+    });
+    const navigate = useNavigate();
+    const handlePinChange = (type, value) => {
+        setValue(type, value);
+    }
+
+    function onSubmit(data) {
+        if (data.set === data.confirm) {
+            console.log(data);
+            navigate('/create-account');
+        } else {
+            alert("MPIN does not match");
+        }
+    }
+
     return (
         <div className="mpin-container">
-            <div className="mpin-set">
-                {/* logo and franchise button */}
-
-                <div className="mpin-header">
-                    <div className="logo-container">
-                        <img src={logo} alt="Company logo" className="logo" />
+            <form className="mpin-form" action="" onSubmit={handleSubmit(onSubmit)}>
+                <TitleBanner
+                    icon={<SetMPinBg />}
+                    title="SET NEW M-PIN"
+                    subtitle="HEY THERE!"
+                    description="SET YOUR 4 DIGIT M-PIN"
+                >
+                    <div className="w-full flex justify-between flex-col">
+                        <div className="w-full flex flex-col justify-center space-y-4">
+                            <MPININPUT length={4} onChange={(value) => handlePinChange("set", value)} />
+                            <MPININPUT length={4} onChange={(value) => handlePinChange("confirm", value)} />
+                        </div>
+                        <button className="btn mt-3" type="submit">CONFIRM</button>
                     </div>
-                    <div className="franchise-apply">
-                        <button type="submit" className="w-48 p-2 mt-1 bg-primary text-secondary rounded">
-                            Apply for franchise
-                        </button>
-                    </div>
-                </div>
-
-                {/* mpin set up message */}
-
-                <div className="mt-2 mpin-title">
-                    <h2>Set up your 4 digit MPIN</h2>
-                </div>
-
-                {/* Existing account check */}
-                <div className="mb-8 already-acc-container">
-                    <p>Already have an account? <a className="click-here-link" href="/login">Click here</a></p>
-                </div>
-
-                {/* set and confirm pin field */}
-                <div className="mt-4 set-pin-cont">
-                    <div className="mb-6 enter-pin-cont">
-                        <p>Enter your PIN</p>
-                        <MPININPUT />
-                    </div>
-                    <div className="mt-2 mb-6 conf-pin-cont">
-                        <p>Confim your PIN</p>
-                        <MPININPUT />
-                        {/* <PinForm />  */}
-                    </div>
-                </div>
-
-                {/* continue to payment */}
-                <div className="continue-btn-cont">
-                    <button type="submit" className="w-56 p-2 mt-1 bg-primary text-secondary rounded continue-btn">
-                        Continue to payment
-                    </button>
-                </div>
-            </div>
-
-            {/* Banner image */}
-            <div className="mpin-side-image">
-                <img height={"100%"} width={"100%"} src={bannerMPIN} alt="MPIN banner image" className="mpin-banner" />
-            </div>
+                </TitleBanner>
+            </form>
         </div>
     )
 }
