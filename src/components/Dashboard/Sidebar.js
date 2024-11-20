@@ -13,21 +13,12 @@ import {
 } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import SupportIcon from '@mui/icons-material/Support';
 import LogoutIcon from '@mui/icons-material/Logout';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Sidebar = ({ onMenuClick }) => {
-  const [openBlockchain, setOpenBlockchain] = React.useState(false);
-
-  const handleBlockchainClick = () => {
-    setOpenBlockchain(!openBlockchain);
-  };
-
   return (
     <Drawer
       variant="permanent"
@@ -41,6 +32,14 @@ const Sidebar = ({ onMenuClick }) => {
       <Box sx={{ overflow: 'auto' }}>
         <List>
           <ListItem disablePadding>
+            <ListItemButton onClick={() => onMenuClick('Home')}>
+              <ListItemIcon>
+                <AccountCircleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
             <ListItemButton onClick={() => onMenuClick('Dashboard')}>
               <ListItemIcon>
                 <DashboardIcon />
@@ -49,47 +48,19 @@ const Sidebar = ({ onMenuClick }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => onMenuClick('Profile')}>
-              <ListItemIcon>
-                <AccountCircleIcon />
-              </ListItemIcon>
-              <ListItemText primary="Profile" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton onClick={handleBlockchainClick}>
-              <ListItemIcon>
-                <CurrencyBitcoinIcon />
-              </ListItemIcon>
-              <ListItemText primary="Blockchain" />
-              {openBlockchain ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            </ListItemButton>
-          </ListItem>
-          <List component="div" disablePadding sx={{ display: openBlockchain ? 'block' : 'none' }}>
-            <ListItem button sx={{ pl: 4 }} onClick={() => onMenuClick('Blockchain Report')}>
-              <ListItemText primary="Blockchain Report" />
-            </ListItem>
-            <ListItem button sx={{ pl: 4 }} onClick={() => onMenuClick('My Downline')}>
-              <ListItemText primary="My Downline" />
-            </ListItem>
-            <ListItem button sx={{ pl: 4 }} onClick={() => onMenuClick('Referral ID Details')}>
-              <ListItemText primary="Referral ID Details" />
-            </ListItem>
-          </List>
-          <ListItem disablePadding>
-            <ListItemButton onClick={() => onMenuClick('Recharge')}>
+            <ListItemButton onClick={() => onMenuClick('Plan')}>
               <ListItemIcon>
                 <AutorenewIcon />
               </ListItemIcon>
-              <ListItemText primary="Recharge" />
+              <ListItemText primary="Plan" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => onMenuClick('Withdraw')}>
+            <ListItemButton onClick={() => onMenuClick('History')}>
               <ListItemIcon>
                 <AccountBalanceWalletIcon />
               </ListItemIcon>
-              <ListItemText primary="Withdraw" />
+              <ListItemText primary="History" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>

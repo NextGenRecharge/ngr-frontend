@@ -1,0 +1,137 @@
+.ant-layout-header{
+    background-color:  #551a94 !important;
+}
+.ant-layout-footer{
+    padding: 0px !important;
+}
+.header-logo {
+    width: 120px;
+    margin-right: 20px;
+  }
+
+  .header-icons {
+    display: flex;
+    align-items: center;
+}
+
+.header-icon {
+    cursor: pointer;
+    color: white;
+}
+  
+  /* .image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  } */
+  
+  /* .image-item {
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  } */
+  
+  .image-item.active {
+    background-color: #e0d0ff;
+    border: 2px solid #551a94;
+  }
+  
+  /* .image-item img {
+    max-width: 60px;
+    height: auto;
+  } */
+  
+  .image-item span {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  
+  .image-item.more .image-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #551a94;
+  }
+  
+  .image-circle img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .content-container {
+    display: flex;
+    gap: 16px; /* Space between the left and right sections */
+    padding: 16px;
+    width: 100%; /* Ensure it occupies the full width */
+    background-color: #EDE5FF!important;
+  }
+  
+  .box-container {
+    display: flex;
+    width: 100%; /* Full width for the container */
+  }
+  
+  .left-boxx,
+  .right-boxx {
+    display: flex;
+    flex-direction: column; /* Allows content to stack vertically if needed */
+    background-color: #f5f5f5; /* Optional background color for visual separation */
+    border-radius: 8px;
+  }
+  
+  .left-boxx {
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 60%;
+    background-color: #EDE5FF!important;
+  }
+  
+  .banner-image {
+    width: 100%; /* Ensure the image scales to fit */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Crop the image nicely if needed */
+    border-radius: 8px;
+    background-color: #EDE5FF!important;
+  }
+  
+  .right-boxx {
+    gap: 16px; /* Space between box1 and box2 */
+    width: 40%;
+  }
+  
+  .box1,
+  .box2 {
+    flex: 1; /* Ensure both boxes inside the right-box have equal height */
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; /* Space between items in the grid */
+  }
+  
+  .image-item {
+    flex: 1 0 calc(33.33% - 8px); /* 3 items per row with spacing */
+    text-align: center;
+  }
+  
+  .image-item img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 8px;
+  }
+  
+  

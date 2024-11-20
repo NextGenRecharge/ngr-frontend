@@ -30,7 +30,7 @@ const Login = () => {
 
     return (
         <div className="signup-container tracking-wide">
-            <div>
+            {/* <div> */}
                 <form className="signup-body" action="" onSubmit={handleSubmit(handleSendOTP)}>
                     <TitleBanner
                         icon={<SignUpBG />}
@@ -50,7 +50,7 @@ const Login = () => {
                         </div>
                     </TitleBanner>
                 </form>
-            </div>
+            {/* </div> */}
         </div>
     );
 };

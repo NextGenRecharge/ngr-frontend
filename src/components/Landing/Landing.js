@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 import "./Login.css";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import logo from "../../asset/logo.png";
 import recharge from "../../asset/recharge.png";
 import dth from "../../asset/dth.png";
@@ -16,8 +17,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SimpleSlider from "./AboutUsSlider";
 import Dth from "../Dth/Dth";
-import Footer from "../Footer/Footer";
+import Footer1 from "../Footer/Footer";
 const Landing = () => {
+
+  const navigate = useNavigate(); // Initialize navigate
+
   const [selectedService, setSelectedService] = useState("Recharge"); // Default to "Recharge"
   const [showMore, setShowMore] = useState(false);
 
@@ -27,6 +31,10 @@ const Landing = () => {
 
   const handleServiceClick = (service) => {
     setSelectedService(service); // Update the selected service
+  };
+
+  const handleLoginClick = () => {
+    navigate("/login"); // Navigate to the login page when login button is clicked
   };
 
   return (
@@ -46,6 +54,7 @@ const Landing = () => {
             <Button
               style={{ border: "2px solid #7966FF", color: "#7966FF" }}
               disabled={false}
+              onClick={handleLoginClick} // Handle login button click
             >
               Login
             </Button>
@@ -229,7 +238,7 @@ const Landing = () => {
         </div>
       </div>
       <div>
-        <Footer />
+        <Footer1 />
       </div>
     </>
   );
