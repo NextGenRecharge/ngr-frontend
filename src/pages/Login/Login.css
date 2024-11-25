@@ -1,48 +1,11 @@
 /* General styles */
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: 'Arial', sans-serif;
     background-color: #f0f0f5;
-}
-
-/* Main container to center everything */
-.signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #ffffff; /* Clean background */
-    padding: 0 20px; /* Some padding for smaller screens */
-}
-
-/* Body of the form, box-like design */
-.signup-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 450px; /* Max width for larger screens */
-    background-color: #ffffff; /* White form box */
-    padding: 0px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border-radius: 8px; /* Rounded corners */
-    text-align: center;
-}
-
-/* Title and description */
-.signup-body h1 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.signup-body p {
-    color: #666;
-    font-size: 1rem;
-    margin-bottom: 20px;
 }
 
 /* Input container for mobile number */
@@ -62,7 +25,8 @@ body, html {
 /* Button styling */
 button {
     width: 100%;
-    background-color: #007BFF; /* Primary color */
+    background-color: #007BFF;
+    /* Primary color */
     color: #fff;
     border: none;
     padding: 12px;
@@ -72,10 +36,6 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
-
 /* Ensuring illustration stays responsive */
 .signup-illustration img {
     max-width: 100%;
@@ -83,15 +43,21 @@ button:hover {
     margin-bottom: 20px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .signup-body {
-        padding: 20px;
-    }
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-@media (max-width: 480px) {
-    .signup-body h1 {
-        font-size: 1.25rem;
-    }
+.input-container span {
+    padding: 10px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-right: none;
+}
+
+.input-container input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 200px;
 }
