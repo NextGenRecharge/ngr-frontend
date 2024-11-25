@@ -4,15 +4,15 @@
 
 
 :root {
-  --primary: #7966FF;
+  --primary: #5F259F;
   --secondary: #FFFFFF;
   --tertiary: #282828;
   --quaternary: #f8f8f8;
 }
 
 @font-face {
-  font-family: Montserrat Regular, sans-serif;
-  src: url('./font/Montserrat-Regular.ttf');
+  font-family: Poppins Regular, sans-serif;
+  src: url('./font/Poppins-Regular.ttf');
 }
 
 @layer utilities {
@@ -21,11 +21,36 @@
   }
 
   .input {
-    height: 35px;
+    /* height: 35px; */
     @apply outline-none rounded-lg border border-gray-500
   }
 
   .input:focus {
     border: 2px solid var(--primary);
   }
+}
+
+/* Main container to center everything */
+.box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #FFFFFF;
+}
+
+/* Body of the form, box-like design */
+.box-container-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  max-width: 402px;
+}
+
+.box-container-body p {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 20px;
 }

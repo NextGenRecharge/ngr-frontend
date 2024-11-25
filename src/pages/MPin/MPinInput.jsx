@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 export function cn(...inputs) {
     return twMerge(clsx(inputs))
 }
+
 function FakeCaret() {
     return (
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center animate-caret-blink">
@@ -23,7 +24,7 @@ export function Slot(props) {
                 'relative w-10 h-10 text-[2rem]',
                 'flex items-center justify-center',
                 'transition-all duration-300',
-                'border-border border-x border-y border-r border-l  rounded-l-md rounded-r-md border-black',
+                'border- border-x border-y border-r border-l  rounded-lg border-[#00000029]',
                 // 'border-border border-y border-r first:border-l  first:rounded-l-md last:rounded-r-md border-black',
                 'group-hover:border-accent-foreground/20 group-focus-within:border-accent-foreground/20',
                 'outline outline-0 outline-accent-foreground/20',
@@ -137,15 +138,16 @@ export const PinForm = () => {
 };
 
 
-export const MPININPUT = ({ length = 4, onChange = () => { } }) => {
+export const MPININPUT = ({ length = 4, onChange = () => { }, type = "text" }) => {
     return (
         <OTPInput
+            type={type}
             maxLength={length}
             containerClassName="group flex items-center has-[:disabled]:opacity-30"
             onChange={onChange}
             render={({ slots }) => (
                 <>
-                    <div className="flex">
+                    <div className="flex gap-2 p-2 justify-center w-full">
                         {slots.map((slot, idx) => (
                             <Slot key={idx} {...slot} />
                         ))}

@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     background-color: #f7f7f7;
 }
 
@@ -12,9 +11,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     background-color: #f7f7f7;
-    max-width: 600px;
+    /* max-width: 600px; */
 }
 
 .title-banner-container h1 {

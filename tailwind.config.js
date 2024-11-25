@@ -12,6 +12,12 @@ module.exports = withMT({
         primary: "var(--primary)",
         secondary: "var(--secondary)",
         tertiary: "var(--tertiary)",
+        gray: {
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          // You can keep adding more shades
+        }
       }
     },
   },

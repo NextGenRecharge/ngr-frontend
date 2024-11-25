@@ -1,5 +1,6 @@
 import React from 'react';
 import './MobileInput.css';
+import IndianFlag from '../../../asset/icons/IndianFlag';
 
 interface CountryCode {
     code: string;
@@ -20,16 +21,16 @@ interface MobileInputProps {
     onMobileNumberChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     register: any;
     className?: string;
+    autoFocus?: boolean;
 }
 
-const MobileInput: React.FC<MobileInputProps> = ({
-    selectedCountryCode = "+91",
-    mobileNumber,
-    onCountryCodeChange,
-    onMobileNumberChange,
-    register,
-    className = ''
-}) => {
+const MobileInput: React.FC<MobileInputProps> = (props) => {
+
+    const {
+        mobileNumber,
+        onMobileNumberChange,
+        className = ''
+    } = props
 
     const handleMobileNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const mobileRegex = /^[0-9\b]+$/;
@@ -41,8 +42,9 @@ const MobileInput: React.FC<MobileInputProps> = ({
 
     return (
         <div className={`mobile-input-container ${className}`}>
-            <span className="country-code-select flex justify-center items-center" >+91</span>
+            <span className="country-code-select flex justify-center items-center" ><IndianFlag /></span>
             <input
+                autoFocus={props?.autoFocus}
                 name='phoneNumber'
                 type="tel"
                 onChange={handleMobileNumberChange}

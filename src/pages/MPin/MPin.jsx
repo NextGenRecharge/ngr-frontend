@@ -4,21 +4,27 @@ import TitleBanner from "../../components/TitleBanner/TitleBanner";
 import { useForm } from "react-hook-form";
 import SetMPinBg from "../../asset/icons/SetMPinBg";
 import { useNavigate } from "react-router-dom";
+import OtpInput from '../../components/core/OtpInput/OtpInput';
+import { useMemo, useState } from 'react';
 
 const MPin = () => {
-    const { handleSubmit, setValue } = useForm({
+
+    const { handleSubmit, setValue, watch } = useForm({
         defaultValues: {
             set: '',
             confirm: ''
         }
     });
+
     const navigate = useNavigate();
-    const handlePinChange = (type, value) => {
-        setValue(type, value);
-    }
+    const values = watch()
+
+    const isValid = useMemo(() => {
+        return values?.set && values?.confirm && values?.set?.join?.("") === values?.confirm?.join?.("") && values.set?.length === 4 && values.confirm?.length === 4
+    }, [values])
 
     function onSubmit(data) {
-        if (data.set === data.confirm) {
+        if (isValid) {
             console.log(data);
             navigate('/create-account');
         } else {
@@ -26,23 +32,46 @@ const MPin = () => {
         }
     }
 
+    function handleChange(value, name) {
+        setValue(name, value)
+    }
+
     return (
-        <div className="mpin-container">
-            <form className="mpin-form" action="" onSubmit={handleSubmit(onSubmit)}>
-                <TitleBanner
-                    icon={<SetMPinBg />}
-                    title="SET NEW M-PIN"
-                    subtitle="HEY THERE!"
-                    description="SET YOUR 4 DIGIT M-PIN"
-                >
-                    <div className="w-full flex justify-between flex-col">
-                        <div className="w-full flex flex-col justify-center space-y-4">
-                            <MPININPUT length={4} onChange={(value) => handlePinChange("set", value)} />
-                            <MPININPUT length={4} onChange={(value) => handlePinChange("confirm", value)} />
+        <div className='box-container p-8'>
+            <form className="box-container-body" action="" onSubmit={handleSubmit(onSubmit)}>
+                <div className='h-full w-full flex flex-col justify-between'>
+                    <div className='h-auto'>
+                        <div>
+                            <h2 className='text-[24px] font-black text-center leading-relaxed'>Set your 4 digit M-PIN</h2>
                         </div>
-                        <button className="btn mt-3" type="submit">CONFIRM</button>
+                        <div className="w-full flex justify-between flex-col">
+                            <div className="w-full flex flex-col gap-4">
+                                <div className='flex flex-col gap-2'>
+                                    <div className='text-gray-500 text-sm'>
+                                        Enter your M-PIN
+                                    </div>
+                                    {/* <MPININPUT type='password' length={4} onChange={(value) => handlePinChange("set", value)} /> */}
+                                    <OtpInput
+                                        value={values.set}
+                                        onChange={(val) => handleChange(val, "set")}
+                                    />
+                                </div>
+                                <div className='flex flex-col gap-2'>
+                                    <div className='text-gray-500 text-sm'>
+                                        Confirm your M-PIN
+                                    </div>
+                                    <OtpInput
+                                        value={values.confirm}
+                                        onChange={(val) => handleChange(val, "confirm")}
+                                    />
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </TitleBanner>
+                    <div className='w-full flex flex-col gap-2'>
+                        <button className={`${!isValid ? "bg-gray-500" : "bg-primary"} w-full h-[48px] mt-1 text-secondary rounded-xl`} type='submit'>Continue</button>
+                    </div>
+                </div>
             </form>
         </div>
     )

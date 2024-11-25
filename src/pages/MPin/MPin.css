@@ -53,10 +53,3 @@
     width: 100%;
 
 }
-
-.flex {
-    display: flex;
-    gap: 7px;
-    padding: 5px;
-    /* border-radius: 5px; */
-}
