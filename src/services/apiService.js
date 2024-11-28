@@ -3,8 +3,10 @@ import LocalStorageService from './localstorageservice';
 
 const API = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
+  withCredentials: true, // Send cookies with requests (if needed)
   headers: {
     'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin':'*'
   },
 });
 
