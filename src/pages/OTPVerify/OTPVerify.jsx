@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './OTPVerify.css';
 import { useForm } from 'react-hook-form';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { MPININPUT } from '../MPin/MPinInput';
 import OtpInput from '../../components/core/OtpInput/OtpInput';
+import API from "../../services/apiService"; // Import API service
 
 const OTPVerify = () => {
     const { handleSubmit, setValue, watch } = useForm({
@@ -13,17 +14,55 @@ const OTPVerify = () => {
     });
 
     const [timer, setTimer] = React.useState(20)
+    const [accessToken,setAccessToken] = useState(null)
     const location = useLocation()
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
     const { otp } = watch()
-    const isValid = otp?.join("").length === 6
-    function verifyOtp() {
+    const isValid = otp?.join("").length === 4
+    async function verifyOtp() {
         if (isValid) {
-            // navigate('/mpin')
-            navigate('/create-account');
+            setLoading(true);
+            setError("");
+            try {
+                const payload = {
+                    payload: [
+                        {
+                            uniqueCode: otp.join(""),
+                            mobileNumber: location.state.number,
+                            emailId: "sagarmangal10@gmail.com",
+                            deviceId: "erueoiwr8493eiurq",
+                            imeiNumber: "",
+                            deviceType: "WEB",
+                            uniqueCodeType: "MOBILE",
+                            locationPermission: true,
+                            longitude: 0,
+                            latitude: 0,
+                            clientType: "INDIVIDUAL",
+                            contactType: "MOBILE",
+                        },
+                    ],
+                };
+                const response = await API.post("/otp/verify_otp", payload, {
+                    headers: { "Content-Type": "application/json" },
+                });
+                console.log(response,"---")
+                if (response?.data?.status === "success") {
+                    localStorage.setItem('accessToken', response?.data?.response[0]?.accessToken);
+                    navigate("/create-account");
+                }
+            } catch (err) {
+                console.error( err?.data?.message);
+                setError(
+                    err?.data?.message || "Failed to send OTP. Please try again."
+                );
+            } finally {
+                setLoading(false);
+            }
         }
     }
-    console.log('isValid', isValid)
+    console.log('isValid', accessToken)
     useEffect(() => {
         const interval = setInterval(() => {
             setTimer((prev) => {
@@ -41,9 +80,44 @@ const OTPVerify = () => {
         return <Navigate replace to='/' />
     }
 
-    function handleResend() {
+    async function handleResend() {
         console.log('resend')
-        setTimer(20)
+        if (location.state.number) {
+            setError("");
+            try {
+                const payload = {
+                    payload: [
+                        {
+                            mobileNumber: location.state.number,
+                            emailId: "sagarmangal10@gmail.com",
+                            deviceId: "erueoiwr8493eiurq",
+                            imeiNumber: "",
+                            deviceType: "WEB",
+                            uniqueCodeType: "MOBILE",
+                            locationPermission: true,
+                            longitude: 0,
+                            latitude: 0,
+                            clientType: "INDIVIDUAL",
+                            contactType: "MOBILE",
+                        },
+                    ],
+                };
+                const response = await API.post("/otp/sent_otp", payload, {
+                    headers: { "Content-Type": "application/json" },
+                });
+                if (response.status === 200) {
+                    console.log(response, "response")
+                }
+            } catch (err) {
+                console.error(err.response?.data || err.message);
+                setError(
+                    err.response?.data?.message || "Failed to send OTP. Please try again."
+                );
+            } finally {
+            }
+        }
+        // setTimer(20)
+
     }
 
     function handleOtpChange(value) {
@@ -61,7 +135,7 @@ const OTPVerify = () => {
                         <div className='flex justify-center'>
                             <OtpInput
                                 autoFocus
-                                length={6}
+                                length={4}
                                 value={otp}
                                 onChange={handleOtpChange}
                             />

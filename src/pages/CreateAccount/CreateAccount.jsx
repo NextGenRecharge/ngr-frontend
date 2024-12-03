@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import TitleBanner from '../../components/TitleBanner/TitleBanner';
-import SetMPinBg from '../../asset/icons/SetMPinBg';
 import { useNavigate } from 'react-router-dom';
+import TitleBanner from '../../components/TitleBanner/TitleBanner';
 import Input from '../../components/core/Input/Input';
 import './CreateAccount.css';
+import API from '../../services/apiService';
 
 const CreateAccount = () => {
-    // first -name required, last-name required, email required, dob required, pincode required, referral code optional
     const { handleSubmit, setValue, formState: { errors, isValid }, register } = useForm({
         defaultValues: {
             firstName: '',
@@ -17,27 +16,68 @@ const CreateAccount = () => {
             pincode: '',
             referralCode: ''
         },
-
     });
+
     const navigate = useNavigate();
-    function onSubmit(data) {
-        console.log(data);
-        navigate('/account-created');
-    }
-    console.log({ errors })
+    const accessToken = localStorage.getItem('accessToken');
+
+    // Fetch details from API on component mount
+    // useEffect(() => {
+    //     const fetchDetails = async () => {
+    //         try {
+    //             const response = await API.get('/client/get_details');
+    //             const data = response.data.payload[0];
+    //             setValue('firstName', data.firstName || '');
+    //             setValue('lastName', data.lastName || '');
+    //             setValue('email', data.email || '');
+    //             setValue('dob', data.dob || '');
+    //             setValue('pincode', data.pinCode || '');
+    //             setValue('referralCode', data.refReferralCode || '');
+    //         } catch (error) {
+    //             console.error('Error fetching details:', error);
+    //         }
+    //     };
+
+    //     fetchDetails();
+    // }, [setValue]);
+
+    // Handle form submission
+    const onSubmit = async (formData) => {
+        try {
+            const payload = {
+                firstName: formData.firstName,
+                middleName: 'tejraj', // Assuming no middle name in the form
+                lastName: formData.lastName,
+                city: 'nagpur', // Assuming city is not part of the form
+                dob: formData.dob,
+                pinCode: formData.pincode,
+                state: 'maharashtra', // Assuming state is not part of the form
+                refReferralCode: formData.referralCode,
+            };
+            await API.post('/client/submit_details', { payload: [payload] },
+              { headers: { 
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}` // Use the token here
+            }}
+            );
+            navigate('/account-created');
+        } catch (error) {
+            console.error('Error submitting details:', error);
+        }
+    };
 
     return (
         <div className='box-container p-8'>
-            <form className="box-container-body" action="" onSubmit={handleSubmit(onSubmit)}>
+            <form className="box-container-body" onSubmit={handleSubmit(onSubmit)}>
                 <div className='h-full w-full flex flex-col justify-between'>
                     <div className='h-auto flex flex-col gap-6'>
                         <div>
                             <h2 className='text-[24px] font-black text-center leading-relaxed'>Set up your account</h2>
                             <div className='my-3 w-full text-center text-[#00000099] text-sm'>
-                                Please enter your detais below
+                                Please enter your details below
                             </div>
                         </div>
-                        <div className='form-container' >
+                        <div className='form-container'>
                             <div className='w-full flex gap-6 justify-between flex-col'>
                                 <Input
                                     autoFocus
@@ -109,7 +149,7 @@ const CreateAccount = () => {
                 </div>
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default CreateAccount
+export default CreateAccount;
