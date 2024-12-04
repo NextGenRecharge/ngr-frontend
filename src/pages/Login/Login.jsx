@@ -36,26 +36,31 @@ const Login = () => {
       setLoading(true);
       setError("");
       try {
-        // Send request to the API
-        const response = await API.post("/otp/sent_otp", {
-          mobileNumber: mobileNumber,
-          emailId: "sagarmangal10@gmail.com",
-          deviceId: "erueoiwr8493eiurq",
-          imeiNumber: "",
-          deviceType: "WEB",
-          uniqueCodeType: "MOBILE",
-          locationPermission: true,
-          longitude: 0,
-          latitude: 0,
-          clientType: "INDIVIDUAL",
-          contactType: "MOBILE",
-        });
-        console.log(response, "response");
+        const payload = {
+          payload: [
+            {
+              mobileNumber: mobileNumber,
+              emailId: "sagarmangal10@gmail.com",
+              deviceId: "erueoiwr8493eiurq",
+              imeiNumber: "",
+              deviceType: "WEB",
+              uniqueCodeType: "MOBILE",
+              locationPermission: true,
+              longitude: 0,
+              latitude: 0,
+              clientType: "INDIVIDUAL",
+              contactType: "MOBILE",
+            },
+          ],
+        };
+        const response = await API.post("/otp/sent_otp", payload, {
+          headers: { "Content-Type": "application/json" },
+        });  
         if (response.status === 200) {
-          // Navigate to OTP verification page with state
           navigate("/otp-verify", { state: { number: mobileNumber } });
         }
       } catch (err) {
+        console.error(err.response?.data || err.message);
         setError(
           err.response?.data?.message || "Failed to send OTP. Please try again."
         );
@@ -64,7 +69,8 @@ const Login = () => {
       }
     }
   };
-
+  
+console.log(mobileNumber,"mobileNumbermobileNumber")
   function handleMobileChange(e) {
     setValue("mobileNumber", e.target.value);
   }

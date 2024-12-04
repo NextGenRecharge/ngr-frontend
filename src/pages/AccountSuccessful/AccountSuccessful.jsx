@@ -1,9 +1,13 @@
 import React from 'react'
 import './AccountSuccessful.css'
 import logo from "../../asset/images/Success.png"
+import { useNavigate } from 'react-router-dom';
 const AccountSuccessful = () => {
+    const navigate = useNavigate();
+
     const onSubmit = (e) => {
-        e.preventDefault()
+        navigate('/login')
+        // e.preventDefault()
         console.log('Go to Login')
     }
     return (
