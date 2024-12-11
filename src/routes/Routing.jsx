@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
-import Dashboard from '../components/Dashboard/Home';
+import Home from '../components/Dashboard/Home';
 import Login from '../pages/Login/Login';
 import MPin from '../pages/MPin/MPin';
 import PublicRoute from './PublicRoute';
@@ -12,6 +12,9 @@ import AccountSuccessful from '../pages/AccountSuccessful/AccountSuccessful';
 import Landing from '../components/Landing/Landing';
 import AboutUs from "../pages/About/AboutUs"; // Adjust the path as needed
 import TermsCondition from "../pages/TermsCondition/TermsCondition";
+import WithNavbar from '../components/WithNavbar/WithNavbar';
+import Dashboard from '../components/Dashboard/Dashboard';
+import Subscription from '../components/Subscription/Subscription';
 
 const Routing = () => {
     return (
@@ -27,11 +30,15 @@ const Routing = () => {
                     <Route path='/mpin' element={<MPin />} />
                     <Route path='/create-account' element={<CreateAccount />} />
                     <Route path='/account-created' element={<AccountSuccessful />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
                 </Route>
                 <Route path="/login" element={<Login />} />
                 <Route element={<PrivateRoute />} >
-                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route element={<WithNavbar />} >
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/subscription" element={<Subscription />} />
+                        <Route path="*" element={<div>Page Not found</div>} />
+                    </Route>
                 </Route>
             </Routes>
         </Router>

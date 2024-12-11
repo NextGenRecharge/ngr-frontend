@@ -1,15 +1,16 @@
 .mobile-input-container {
+    @apply rounded-lg;
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
-    border-radius: 12px;
-    max-width: 400px;
-    margin: 0 auto;
+    /* max-width: 400px; */
+    /* margin: 0 auto; */
 }
 
 .country-code-select {
+    @apply rounded-l-lg;
     border-right: 1px solid #ccc;
-    border-radius: 12px 0px 0px 12px;
+    /* border-radius: 12px 0px 0px 12px; */
     /* margin-right: 8px; */
     padding: 5px;
     background-color: #fff;
@@ -21,10 +22,11 @@
 }
 
 .mobile-number-input {
+    @apply rounded-r-lg;
     flex: 1;
     padding: 8px;
     /* border: 1px solid #ccc; */
-    border-radius: 0px 12px 12px 0px;
+    /* border-radius: 0px 12px 12px 0px; */
     font-size: 16px;
     outline: none;
     height: 40px;
@@ -34,5 +36,5 @@
 .country-code-select:focus,
 .mobile-number-input:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 2px var(--primary);
+    box-shadow: 0 0 0 1px var(--primary);
 }
