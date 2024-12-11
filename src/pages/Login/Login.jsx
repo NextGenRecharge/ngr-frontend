@@ -6,9 +6,10 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import TitleBanner from "../../components/TitleBanner/TitleBanner";
 import SecureLoginIcon from "../../asset/icons/SecureLoginIcon";
-import { Checkbox } from "antd";
+import { Checkbox, notification } from "antd";
 import API from "../../services/apiService"; // Import API service
 import LocalStorageService from "../../services/localstorageservice"; // Import token service
+import axios from 'axios';
 
 const Login = () => {
   const {
@@ -31,16 +32,33 @@ const Login = () => {
   const { mobileNumber, countryCode, agree } = watch();
   const isValid = agree && mobileNumber.length === 10;
 
-  const handleSendOTP = async () => {
-    if (isValid) {
-      setLoading(true);
-      setError("");
-      try {
-        const payload = {
+  const handleProceed = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      const checkPayload = {
+        payload: [
+          {
+            mobileNumber: mobileNumber,
+            clientType: "INDIVIDUAL",
+            deviceId: "erueoiwr8493eiurq",
+          },
+        ],
+      };
+      const checkResponse = await API.post(
+        "/client/exist/get_details",
+        checkPayload,
+        { headers: { "Content-Type": "application/json" } }
+      );
+      console.log(checkResponse,"12345")
+      if (checkResponse?.response) {
+      console.log(checkResponse,"12345")
+      } else {
+        const otpPayload = {
           payload: [
             {
               mobileNumber: mobileNumber,
-              emailId: "sagarmangal10@gmail.com",
+              emailId: "",
               deviceId: "erueoiwr8493eiurq",
               imeiNumber: "",
               deviceType: "WEB",
@@ -53,20 +71,23 @@ const Login = () => {
             },
           ],
         };
-        const response = await API.post("/otp/sent_otp", payload, {
-          headers: { "Content-Type": "application/json" },
-        });  
-        if (response.status === 200) {
+        const otpResponse = await API.post(
+          "/otp/sent_otp",
+          otpPayload,
+          { headers: { "Content-Type": "application/json" } }
+        );
+        if (otpResponse.status === 200) {
           navigate("/otp-verify", { state: { number: mobileNumber } });
         }
-      } catch (err) {
-        console.error(err.response?.data || err.message);
-        setError(
-          err.response?.data?.message || "Failed to send OTP. Please try again."
-        );
-      } finally {
-        setLoading(false);
       }
+    } catch (err) {
+      console.error(err.response?.message || err.message);
+      notification.error(
+        err.response?.message ||
+          "An error occurred. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
   };
   
@@ -83,7 +104,7 @@ console.log(mobileNumber,"mobileNumbermobileNumber")
     <div className="box-container p-8">
       <form
         className="box-container-body"
-        onSubmit={handleSubmit(handleSendOTP)}
+        onSubmit={handleSubmit(handleProceed)}
       >
         <div className="h-full w-full flex flex-col justify-between">
           <div className="h-auto flex flex-col gap-6">
@@ -143,7 +164,7 @@ console.log(mobileNumber,"mobileNumbermobileNumber")
                 </span>
               </span>
             </div>
-            {error && <p className="text-red-500 mt-2">{error}</p>}
+            {/* {error && <p className="text-red-500 mt-2">{error}</p>} */}
           </div>
         </div>
       </form>

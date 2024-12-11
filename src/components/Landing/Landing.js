@@ -19,7 +19,6 @@ import SimpleSlider from "./AboutUsSlider";
 import Dth from "../Dth/Dth";
 import Footer1 from "../Footer/Footer";
 const Landing = () => {
-
   const navigate = useNavigate(); // Initialize navigate
 
   const [selectedService, setSelectedService] = useState("Recharge"); // Default to "Recharge"
@@ -45,12 +44,12 @@ const Landing = () => {
             <img src={logo} alt="Company Logo" className="logo" />
           </div>
           <div className="button-group">
-            <Button
+            {/* <Button
               style={{ background: "#7966FF", color: "white" }}
               onClick={() => alert("Become a Partner")}
             >
               Become Our Partner
-            </Button>
+            </Button> */}
             <Button
               style={{ border: "2px solid #7966FF", color: "#7966FF" }}
               disabled={false}
@@ -163,9 +162,9 @@ const Landing = () => {
               experience.
             </p>
           </div>
-          <div className="slider-container">
+          {/* <div className="slider-container">
             <SimpleSlider />
-          </div>
+          </div> */}
 
           {/* about us */}
 
@@ -175,25 +174,29 @@ const Landing = () => {
             <div className="dash"></div>
           </div>
           <div className="nextgen-about-details">
-            <div className="about-one">
-              <p>
-                NextGen Solution is an emerging digital platform designed to be
-                your one-stop destination for all utility payments and mobile
-                recharges. As we embark on our journey, our mission is to
-                provide a seamless and convenient experience for prepaid mobile
-                recharges, bill payments, and various utility services.
-              </p>
-            </div>
-            <div className="about-two">
-              <p>
-                To kick off our business with added value, we are excited to
-                offer an *exclusive up to 39% discount on prepaid recharge
-                subscriptions*, helping you save more while staying connected.
-                At NextGen Solution, we are committed to delivering reliable,
-                cost-effective services, making us your future go-to platform
-                for all your utility needs.
-              </p>
-            </div>
+            {/* <div className="about-one"> */}
+            {/* <p>
+              NextGen Solution Online Services is an emerging digital platform
+              designed to be your one-stop destination for all utility payments
+              and mobile recharges. As we embark on our journey, our mission is
+              to provide a seamless and convenient experience for prepaid mobile
+              recharges, bill payments, and various utility services.
+            </p> */}
+            {/* </div> */}
+            {/* <div className="about-two"> */}
+            <p>
+               Nextgen Solution Online Services is one of India’s first
+              multi mobile operator, instant pre-paid recharge portal. Nextgen
+              Solution Online Services provides recharge service for all major
+              prepaid mobile service providers in India. We aim at empowering
+              our users by providing quick and convenient prepaid mobile
+              recharge as well as DTH recharge. Nextgen Solution Online Services
+              is completely reliable in terms of services and security. We at
+              Nextgen Solution Online Services believe that customer
+              satisfaction should be the primary objective of any successful
+              company.
+            </p>
+            {/* </div> */}
           </div>
 
           {/* Mobile container */}

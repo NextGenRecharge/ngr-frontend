@@ -18,9 +18,9 @@ const Footer1 = () => {
           <hr className="footer-line" />
           <li><Link to="/about" style={{ color: "white", textDecoration: "none" }}>About Us</Link></li>
           <li><Link to="/termsCondition">Terms & Conditions</Link></li>
-          <li>Apply for Franchise</li>
-          <li>Contact Us</li>
-          <li>Help</li>
+          <li><Link to="/privacyPolicy">Privacy Policy</Link></li>
+          {/* <li>Contact Us</li>
+          <li>Help</li> */}
         </ul>
       </div>
       {/* Third Column */}
