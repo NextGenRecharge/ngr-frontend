@@ -6,14 +6,17 @@ const AboutUs = () => {
     <div style={{ padding: "20px" }}>
       <h1>About Us</h1>
       <p>
-        Welcome to our website! We are a company dedicated to delivering the best services.
-        Our mission is to provide quality and customer satisfaction.
-        We believe in continuous improvement and innovation.
-      </p>
-      <p>
-        Our team is comprised of experienced professionals who are passionate about their work.
-        We strive to exceed expectations and set new standards in the industry.
-      </p>
+               Nextgen Solution Online Services is one of India’s first
+              multi mobile operator, instant pre-paid recharge portal. Nextgen
+              Solution Online Services provides recharge service for all major
+              prepaid mobile service providers in India. We aim at empowering
+              our users by providing quick and convenient prepaid mobile
+              recharge as well as DTH recharge. Nextgen Solution Online Services
+              is completely reliable in terms of services and security. We at
+              Nextgen Solution Online Services believe that customer
+              satisfaction should be the primary objective of any successful
+              company.
+            </p>
     </div>
   );
 };
