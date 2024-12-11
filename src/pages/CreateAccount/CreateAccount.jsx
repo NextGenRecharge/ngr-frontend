@@ -5,6 +5,7 @@ import TitleBanner from '../../components/TitleBanner/TitleBanner';
 import Input from '../../components/core/Input/Input';
 import './CreateAccount.css';
 import API from '../../services/apiService';
+import { notification } from 'antd';
 
 const CreateAccount = () => {
     const { handleSubmit, setValue, formState: { errors, isValid }, register } = useForm({
@@ -63,6 +64,10 @@ const CreateAccount = () => {
             navigate('/account-created');
         } catch (error) {
             console.error('Error submitting details:', error);
+            notification.error(
+                error.response?.message ||
+                  "An error occurred. Please try again."
+              );
         }
     };
 

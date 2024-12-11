@@ -5,6 +5,7 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { MPININPUT } from '../MPin/MPinInput';
 import OtpInput from '../../components/core/OtpInput/OtpInput';
 import API from "../../services/apiService"; // Import API service
+import { notification } from 'antd';
 
 const OTPVerify = () => {
     const { handleSubmit, setValue, watch } = useForm({
@@ -54,9 +55,10 @@ const OTPVerify = () => {
                 }
             } catch (err) {
                 console.error( err?.data?.message);
-                setError(
-                    err?.data?.message || "Failed to send OTP. Please try again."
-                );
+                notification.error(
+                    err.response?.message ||
+                      "An error occurred. Please try again."
+                  );
             } finally {
                 setLoading(false);
             }
