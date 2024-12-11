@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import TitleBanner from "../../components/TitleBanner/TitleBanner";
 import SecureLoginIcon from "../../asset/icons/SecureLoginIcon";
-import { Checkbox } from "antd";
+import { Checkbox, notification } from "antd";
 import API from "../../services/apiService"; // Import API service
 import LocalStorageService from "../../services/localstorageservice"; // Import token service
 import axios from 'axios';
@@ -81,9 +81,9 @@ const Login = () => {
         }
       }
     } catch (err) {
-      console.error(err.response?.data || err.message);
-      setError(
-        err.response?.data?.message ||
+      console.error(err.response?.message || err.message);
+      notification.error(
+        err.response?.message ||
           "An error occurred. Please try again."
       );
     } finally {
@@ -164,7 +164,7 @@ console.log(mobileNumber,"mobileNumbermobileNumber")
                 </span>
               </span>
             </div>
-            {error && <p className="text-red-500 mt-2">{error}</p>}
+            {/* {error && <p className="text-red-500 mt-2">{error}</p>} */}
           </div>
         </div>
       </form>
