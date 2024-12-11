@@ -12,7 +12,7 @@ import AccountSuccessful from '../pages/AccountSuccessful/AccountSuccessful';
 import Landing from '../components/Landing/Landing';
 import AboutUs from "../pages/About/AboutUs"; // Adjust the path as needed
 import TermsCondition from "../pages/TermsCondition/TermsCondition";
-
+import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 const Routing = () => {
     return (
         <Router>
@@ -21,6 +21,7 @@ const Routing = () => {
                     <Route path="/" element={<Landing />} />
                     <Route path="/about" element={<AboutUs />} />
                     <Route path="/termsCondition" element={<TermsCondition />} />
+                    <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
                     <Route path="/signup" element={<Login />} />
                     <Route path="/otp-verify" element={<OTPVerify />} />
                     <Route path="/forgot-password" element={<ForgotPassword />} />
