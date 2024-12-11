@@ -3,29 +3,31 @@
     align-items: center;
     /* border: 1px solid #ccc; */
     border-radius: 12px;
-    max-width: 400px;
-    margin: 0 auto;
+    /* max-width: 400px;
+    margin: 0 auto; */
 }
 
 .plan-input-container .currency {
+    @apply rounded-l-lg;
     padding: auto;
     width: 60px;
-    border: 1px solid #ccc;
-    border-radius: 12px 0px 0px 12px;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    /* border-radius: 12px 0px 0px 12px; */
     /* margin-right: 8px; */
     padding: 8px;
     background-color: #fff;
     font-size: 16px;
     outline: none;
     cursor: pointer;
-    height: 40px;
+    /* height: 40px; */
 }
 
 .check-plan {
-
-    border-radius: 0px 12px 12px 0px;
+   @apply rounded-r-lg;
     background-color: var(--primary);
-    height: 40px;
+    /* height: 40px; */
     color: white;
     padding: 6px;
     padding-left: 8px;
@@ -38,16 +40,14 @@
 .plan-input {
     flex: 1;
     padding: 8px;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
+    border: 1px solid #ccc;
     font-size: 16px;
     outline: none;
-    height: 40px;
+    /* height: 40px; */
     margin-right: 4px;
 }
 
 .plan-input:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 2px var(--primary);
+    /* box-shadow: 0 0 0 1px var(--primary); */
 }

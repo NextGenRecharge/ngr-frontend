@@ -32,7 +32,7 @@ const PlanInput: React.FC<PlanInputProps> = ({
 
     return (
         <div className={`plan-input-container ${className}`}>
-            <div className="currency" >
+            <div className="currency h-full" >
                 ₹
             </div>
             <input
@@ -40,11 +40,11 @@ const PlanInput: React.FC<PlanInputProps> = ({
                 value={value}
                 name='plan'
                 onChange={handlePlanInput}
-                className="plan-input"
+                className="plan-input h-full"
                 placeholder="Amount"
                 {...register('plan', { required: 'plan is required' })}
             />
-            <div className="check-plan">
+            <div className="check-plan h-full">
                 Check Plans
             </div>
         </div>

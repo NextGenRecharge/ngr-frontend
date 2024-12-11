@@ -1,0 +1,35 @@
+.dashboard-page-container{
+    background-image: linear-gradient(180deg, #EDE5FF, #fff);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    height: 100vh;
+    overflow-y: auto;
+}
+  
+.sticky-navigation{
+    /* background-color: #fff; */
+    transition: background .5s;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 10px 10px -10px;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.6px);
+    -webkit-backdrop-filter: blur(4.6px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.main-container{
+    display: flex;
+    flex:1;
+}
+/* 
+.bottom-main-container{
+    background: url(../../asset/images/Next_bg_img.jpg) no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+} */
+
+@keyframes sticky-nav{
+    
+}
+

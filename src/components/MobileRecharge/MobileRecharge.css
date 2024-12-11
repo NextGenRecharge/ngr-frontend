@@ -18,7 +18,6 @@
 .select-plan:focus,
 .operator:focus {
     border-color: var(--primary) !important;
-    box-shadow: 0 0 0 2px var(--primary) !important;
 }
 
 /* Styles for the input fields */
@@ -69,3 +68,20 @@
     margin-top: -8px;
     margin-bottom: 10px;
 }
+
+.recharge-type-item-active{
+    background-color: var(--primary);
+    color: #fff;
+}
+
+.ant-select-open .ant-select-selector {
+    border-color: #5F259F !important;
+    box-shadow: none !important;
+  }
+.ant-select-selector:hover {
+    border-color: #5F259F !important;
+    box-shadow: none !important;
+  }
+  .ant-select-selection {
+    background-color: #EDE5FF !important;
+  }
