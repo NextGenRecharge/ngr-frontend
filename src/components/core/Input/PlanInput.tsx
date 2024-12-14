@@ -1,17 +1,6 @@
-import React from 'react';
-import './Input.css';
-
-interface CountryCode {
-    code: string;
-    name: string;
-}
-
-const countryCodes: CountryCode[] = [
-    { code: '+1', name: 'USA' },
-    { code: '+91', name: 'India' },
-    { code: '+44', name: 'UK' },
-    // Add more country codes as needed
-];
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./Input.css";
 
 interface PlanInputProps {
     onChange: (number: string) => void;
@@ -30,19 +19,23 @@ const PlanInput: React.FC<PlanInputProps> = ({
     onCheckPlanClick,
     readOnly
 }) => {
+    const navigate = useNavigate();
+
     const handlePlanInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(event.target.value);
     };
 
+    const handleCheckPlansClick = () => {
+        navigate("/recharge-plans");
+    };
+
     return (
         <div className={`plan-input-container ${className}`}>
-            <div className="currency h-full" >
-                ₹
-            </div>
+            <div className="currency h-full">₹</div>
             <input
                 type="tel"
                 value={value}
-                name='plan'
+                name="plan"
                 onChange={handlePlanInput}
                 className="plan-input h-full"
                 placeholder="Amount"

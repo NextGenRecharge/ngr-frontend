@@ -22,7 +22,7 @@
 
   .input {
     /* height: 35px; */
-    @apply outline-none rounded-lg border border-gray-500
+    @apply outline-none rounded-lg border border-black
   }
 
   .input:focus {
@@ -45,8 +45,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #FFFFFF;
-  max-width: 402px;
+  background-image: linear-gradient(180deg, #EDE5FF, #fff);
+    backdrop-filter: blur(5px);     max-width: 402px;
 }
 
 .box-container-body p {

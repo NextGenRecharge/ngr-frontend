@@ -5,7 +5,6 @@ const PrivacyPolicy = () => {
   return (
     <div className="privacy-policy">
       <h1>Privacy Policy</h1>
-
       <p>
         This Privacy Policy provides you with details about the manner in which
         your data is collected, stored & used by us. You are advised to read
@@ -16,7 +15,6 @@ const PrivacyPolicy = () => {
         use or access Nextgen Solution Online Services website, WAP site, or
         mobile applications.
       </p>
-
       <p className="note">
         <strong>Note:</strong> Our privacy policy may change at any time without
         prior notification. To make sure that you are aware of any changes,

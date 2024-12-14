@@ -22,26 +22,6 @@ const CreateAccount = () => {
     const navigate = useNavigate();
     const accessToken = localStorage.getItem('accessToken');
 
-    // Fetch details from API on component mount
-    // useEffect(() => {
-    //     const fetchDetails = async () => {
-    //         try {
-    //             const response = await API.get('/client/get_details');
-    //             const data = response.data.payload[0];
-    //             setValue('firstName', data.firstName || '');
-    //             setValue('lastName', data.lastName || '');
-    //             setValue('email', data.email || '');
-    //             setValue('dob', data.dob || '');
-    //             setValue('pincode', data.pinCode || '');
-    //             setValue('referralCode', data.refReferralCode || '');
-    //         } catch (error) {
-    //             console.error('Error fetching details:', error);
-    //         }
-    //     };
-
-    //     fetchDetails();
-    // }, [setValue]);
-
     // Handle form submission
     const onSubmit = async (formData) => {
         try {
@@ -84,6 +64,7 @@ const CreateAccount = () => {
                         </div>
                         <div className='form-container'>
                             <div className='w-full flex gap-6 justify-between flex-col'>
+                                <div className='w-full flex flex-row gap-6'>
                                 <Input
                                     autoFocus
                                     placeholder="First Name"
@@ -103,6 +84,7 @@ const CreateAccount = () => {
                                     register={register('lastName', { required: "Last Name is required" })}
                                     helperText={errors.lastName && errors.lastName.message}
                                 />
+                                </div>
                                 <Input
                                     label="Enter your Email*"
                                     labelClass="text-gray-500"

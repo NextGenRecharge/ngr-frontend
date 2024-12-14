@@ -14,7 +14,7 @@ import MobileRecharge from "../MobileRecharge/MobileRecharge";
 import Dth from "../Dth/Dth";
 import "./Home.css";
 import RechargeAndBills from "../RechargeAndBills/RechargeAndBills";
-
+import Notification from "../Notification/Notification";
 const { Content } = Layout;
 
 const Home = () => {
@@ -27,6 +27,9 @@ const Home = () => {
   const handleMoreClick = () => console.log("More services clicked");
 
   return (
+    <>
+        {/* <Notification message="🚀 New Features Coming Soon! Stay Updated! 🎉" /> */}
+    
     <div className="content-container py-8">
       <div className="form-banner-card w-full h-full flex gap-4 px-8 py-7">
         <div className="banner-card w-1/2">
@@ -39,6 +42,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

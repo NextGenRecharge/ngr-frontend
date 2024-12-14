@@ -132,10 +132,10 @@ const TermsCondition = () => {
       <p>
         In many rare cases if you have not received the recharge and the refund
         has also not been provided to your E-Wallet, you can request for a
-        refund by contacting our customer support at care@Nextgen Solution
-        Online Services .in.
+        refund by contacting our customer support at support@nextgensolution.net.in
       </p>
     </div>
+    
   );
 };
 

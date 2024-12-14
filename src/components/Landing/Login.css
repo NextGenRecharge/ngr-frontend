@@ -3,11 +3,13 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #020889;
+  /* background-color: #020889; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: linear-gradient(180deg, #EDE5FF, #fff);
+  backdrop-filter: blur(5px);   
 }
 
 .logo-container {
@@ -194,21 +196,47 @@
 
 .about-us-details {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  text-align: center;
+  gap: 10px; /* Space between image row and text */
   width: 100%;
 }
 
-.about-us-details p {
-  font-size: 16px;
-  color: #333;
-  line-height: 1.5;
-  /* make center align paragraph */
-  text-align: center;
-
+.images-wrapper {
+  display: flex;
+  justify-content: flex-start; /* Ensures the images are spaced apart */
+  align-items: flex-start;
+  width: 100%;
+  /* max-width: p50px; Optional: Limits the width for responsiveness */
+  gap: 40px;
 }
+
+.images-wrapper img {
+  max-width: 38%; /* Ensures images take up equal width */
+  width: 20%;
+  height: auto; /* Maintains aspect ratio */
+}
+
+.text-wrapper {
+  max-width: 40%; /* Matches the width of the second image */
+  margin-left: 20px;
+  padding: 15px; /* Adds inner spacing to the box */
+  border: 1px solid #ddd; /* Creates a border for the box */
+  border-radius: 8px; /* Adds rounded corners */
+  /* background-color: #f9f9f9; Optional: Light background for the text box */
+  text-align: left; /* Aligns the text to the left */
+  color: #333;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+  position: relative;
+  align-self: flex-end; /* Aligns the box to the right */
+}
+.text-wrapper p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+
 
 .slider-container {
   width: 100%;
@@ -269,13 +297,8 @@
 
 }
 
-.purple-bg {
-  width: 50%;
-  background-color: purple
-}
-
 .mob-details {
-  width: 50%;
+  width: 100%;
 }
 
 .mob-rch-container h2 {
@@ -300,6 +323,10 @@
 
 .mob-rch-info {
   text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .why-nxt-title {
@@ -404,9 +431,40 @@
 .title {
   font-size: 24px;
   font-weight: bold;
+  text-align: center;
+}
+.nextgen-about-details {
+  display: flex;
+  flex-direction: row; /* Ensures image and text stack vertically */
+  align-items: center; /* Centers content horizontally */
+  gap: 20px; /* Adds space between image and text */
+  padding: 20px; /* Adds some padding around the container */
+  max-width: 1000px; /* Optional: Limits the width of the section for better readability */
+  margin: 0 auto; /* Centers the container horizontally */
+  text-align: center; /* Ensures text is centered */
 }
 
-.about-us-details, .nextgen-about-details, .mob-details, .why-nxt-info {
+.about-img-wrapper {
+  width: 100%; /* Ensures the image takes up the full width of its container */
+  display: flex;
+  justify-content: center; /* Centers the image */
+}
+
+.about-img-wrapper img {
+  max-width: 100%; /* Ensures the image is responsive */
+  height: auto; /* Maintains aspect ratio */
+  border-radius: 8px; /* Adds slight rounding to the corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+}
+
+.nextgen-about-details p {
+  font-size: 16px;
+  line-height: 1.6; /* Improves readability */
+  color: #333; /* Text color */
+  margin: 0; /* Removes default margin */
+}
+
+.about-us-details,  .mob-details, .why-nxt-info {
   font-size: 16px;
   line-height: 1.6;
   color: #333;
@@ -421,10 +479,6 @@
   padding: 20px 0;
 }
 
-.purple-bg {
-  background-color: #6a1b9a; /* Example color */
-  height: 200px; /* Adjust height as needed */
-}
 
 .mob-rch-title, .why-nxt-title {
   text-align: center;
@@ -445,4 +499,6 @@
 .logo {
   max-width: 150px; /* Adjust logo size */
 }
-
+.img_mobile{
+  width: 40%;
+}

@@ -8,8 +8,6 @@ import TitleBanner from "../../components/TitleBanner/TitleBanner";
 import SecureLoginIcon from "../../asset/icons/SecureLoginIcon";
 import { Checkbox, notification } from "antd";
 import API from "../../services/apiService"; // Import API service
-import LocalStorageService from "../../services/localstorageservice"; // Import token service
-import axios from 'axios';
 
 const Login = () => {
   const {
@@ -28,7 +26,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
+  const [isDeviceIdMatch, setIsDeviceIdMatch] = useState();
   const { mobileNumber, countryCode, agree } = watch();
   const isValid = agree && mobileNumber.length === 10;
 
@@ -45,15 +43,13 @@ const Login = () => {
           },
         ],
       };
-      const checkResponse = await API.post(
-        "/client/exist/get_details",
+      const checkResponse = await API.post("/client/exist/get_details",
         checkPayload,
         { headers: { "Content-Type": "application/json" } }
       );
-      console.log(checkResponse,"12345")
-      if (checkResponse?.response) {
-      console.log(checkResponse,"12345")
-      } else {
+      if (checkResponse?.status === 200) {
+        const data = checkResponse?.data?.response[0]?.isDeviceIdMatch
+        setIsDeviceIdMatch(data);
         const otpPayload = {
           payload: [
             {
@@ -77,21 +73,20 @@ const Login = () => {
           { headers: { "Content-Type": "application/json" } }
         );
         if (otpResponse.status === 200) {
-          navigate("/otp-verify", { state: { number: mobileNumber } });
+          navigate("/otp-verify", { state: { number: mobileNumber , isDeviceIdMatch:data} });
         }
       }
     } catch (err) {
       console.error(err.response?.message || err.message);
       notification.error(
         err.response?.message ||
-          "An error occurred. Please try again."
+        "An error occurred. Please try again."
       );
     } finally {
       setLoading(false);
     }
   };
-  
-console.log(mobileNumber,"mobileNumbermobileNumber")
+
   function handleMobileChange(e) {
     setValue("mobileNumber", e.target.value);
   }
@@ -138,9 +133,8 @@ console.log(mobileNumber,"mobileNumbermobileNumber")
               </div>
               <button
                 disabled={!isValid || loading}
-                className={`${
-                  !isValid ? "bg-gray-500" : "bg-primary"
-                } w-full h-[48px] mt-1 text-secondary rounded-xl`}
+                className={`${!isValid ? "bg-gray-500" : "bg-primary"
+                  } w-full h-[48px] mt-1 text-secondary rounded-xl`}
                 type="submit"
               >
                 {loading ? "Sending..." : "Send OTP"}
