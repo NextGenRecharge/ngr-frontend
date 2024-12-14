@@ -6,7 +6,6 @@ import { MPININPUT } from '../MPin/MPinInput';
 import OtpInput from '../../components/core/OtpInput/OtpInput';
 import API from "../../services/apiService"; // Import API service
 import { notification } from 'antd';
-import axios from 'axios';
 
 const OTPVerify = () => {
     const { handleSubmit, setValue, watch } = useForm({
