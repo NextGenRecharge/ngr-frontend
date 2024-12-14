@@ -8,6 +8,7 @@ import BarSelector from '../core/BarSelector/BarSelector';
 import { ReactComponent as TickIcon } from "../../asset/icons/tick.svg"
 import { Button, Modal, Select, Space } from 'antd';
 import API from '../../services/apiService';
+import RechargePlans from '../RechargePlans/RechargePlans';
 const MobileRecharge = (props) => {
     const { categoryOptions = {} } = props
     const circleRef = useRef(null)
@@ -199,21 +200,13 @@ const MobileRecharge = (props) => {
                 </button>
             </form>
             {
-                <Modal
-                    title={<p>Mobile Prepaid Plans</p>}
-                    footer={
-                        <Button className='bg-primary text-secondary'>
-                            Proceed
-                        </Button>
-                    }
+                openPlans &&
+                <RechargePlans
                     loading={planLoading}
                     open={openPlans}
-                    onCancel={() => setOpenPlans(false)}
-                >
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                </Modal>
+                    plansData={plansData}
+                    onClose={() => setOpenPlans(false)}
+                />
             }
         </div>
     );

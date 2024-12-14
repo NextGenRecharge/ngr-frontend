@@ -19,14 +19,9 @@ const PlanInput: React.FC<PlanInputProps> = ({
     onCheckPlanClick,
     readOnly
 }) => {
-    const navigate = useNavigate();
-
+    
     const handlePlanInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(event.target.value);
-    };
-
-    const handleCheckPlansClick = () => {
-        navigate("/recharge-plans");
     };
 
     return (
