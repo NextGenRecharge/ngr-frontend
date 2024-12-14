@@ -17,6 +17,7 @@ import Dashboard from '../components/Dashboard/Dashboard';
 import Subscription from '../components/Subscription/Subscription';
 import RechargePlans from "../components/RechargePlans/RechargePlans";
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
+import MyAccount from '../components/core/MyAccount/MyAccount';
 const Routing = () => {
     return (
         <Router>
@@ -41,6 +42,7 @@ const Routing = () => {
                         <Route path="/home" element={<Home />} />
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/subscription" element={<Subscription />} />
+                        <Route path="/my-account" element={<MyAccount />} />
                         <Route path="*" element={<div>Page Not found</div>} />
                     </Route>
                 </Route>

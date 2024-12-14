@@ -75,12 +75,12 @@ const WithNavbar = () => {
                         activeClass={("active-navigation ") + (isScrolled ? "sticky-nav" : "")}
                     />
                 </div>
-                <div className="header-icons">
+                {/* <div className="header-icons">
                     <UserOutlined
                         className="header-icon"
                         style={{ fontSize: "20px" }}
                     />
-                </div>
+                </div> */}
             </div>
             <div className='bottom-main-container flex' ref={mainRef}>
                 <div className=''>
