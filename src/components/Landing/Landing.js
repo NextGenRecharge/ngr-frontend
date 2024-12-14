@@ -1,37 +1,27 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 import "./Login.css";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import logo from "../../asset/logo.png";
-import recharge from "../../asset/recharge.png";
-import dth from "../../asset/dth.png";
-import Landline from "../../asset/Landline.png";
-import Brodband from "../../asset/Brodband.png";
-import Fasttag from "../../asset/Fasttag.png";
-import Electricity from "../../asset/Electricity.png";
-import Cylinder from "../../asset/Cylinder.png";
-import more from "../../asset/more.png";
-import BannerMobile from "../../asset/BannerMobile.png";
-import MobileRecharge from "../MobileRecharge/MobileRecharge";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import SimpleSlider from "./AboutUsSlider";
-import Dth from "../Dth/Dth";
+import { useNavigate } from "react-router-dom";
+import logo from "../../asset/purple_logo.png";
 import Footer1 from "../Footer/Footer";
+import { Layout, theme } from "antd";
+import BannerWeb from "../../asset/images/banner.png";
+import RechargeAndBills from "../RechargeAndBills/RechargeAndBills";
+import Landing1 from "../../asset/landing1.png";
+import Landing2 from "../../asset/landing2.png";
+import AboutUs from "../../asset/AboutUs.png";
+import Notification from "../Notification/Notification";
+const { Content } = Layout;
+
 const Landing = () => {
+  const [selectedService, setSelectedService] = useState("Recharge");
+  const {
+    token: { borderRadiusLG },
+  } = theme.useToken();
   const navigate = useNavigate(); // Initialize navigate
 
-  const [selectedService, setSelectedService] = useState("Recharge"); // Default to "Recharge"
-  const [showMore, setShowMore] = useState(false);
-
-  const handleMoreClick = () => {
-    setShowMore(!showMore); // Toggle visibility of the more box
-  };
-
-  const handleServiceClick = (service) => {
-    setSelectedService(service); // Update the selected service
-  };
-
+  const handleServiceClick = (service) => setSelectedService(service);
+  const handleMoreClick = () => console.log("More services clicked");
   const handleLoginClick = () => {
     navigate("/login"); // Navigate to the login page when login button is clicked
   };
@@ -45,11 +35,11 @@ const Landing = () => {
           </div>
           <div className="button-group">
             {/* <Button
-              style={{ background: "#7966FF", color: "white" }}
-              onClick={() => alert("Become a Partner")}
-            >
-              Become Our Partner
-            </Button> */}
+             style={{ background: "#7966FF", color: "white" }}
+             onClick={() => alert("Become a Partner")}
+           >
+             Become Our Partner
+           </Button> */}
             <Button
               style={{ border: "2px solid #7966FF", color: "#7966FF" }}
               disabled={false}
@@ -59,89 +49,17 @@ const Landing = () => {
             </Button>
           </div>
         </div>
-        <div className="box-container">
-          <div className="left-box">
-            <div className="box1">
-              <div className="image-grid">
-                <div
-                  className={`image-item ${
-                    selectedService === "Recharge" ? "active" : ""
-                  }`}
-                  onClick={() => handleServiceClick("Recharge")}
-                >
-                  <img src={recharge} alt="Recharge" />
-                  <span>Recharge</span>
-                </div>
-                <div
-                  className={`image-item ${
-                    selectedService === "DTH" ? "active" : ""
-                  }`}
-                  onClick={() => handleServiceClick("DTH")}
-                >
-                  <img src={dth} alt="DTH" />
-                  <span>DTH</span>
-                </div>
-                <div
-                  className={`image-item ${
-                    selectedService === "Landline" ? "active" : ""
-                  }`}
-                  onClick={() => handleServiceClick("Landline")}
-                >
-                  <img src={Landline} alt="Landline" />
-                  <span>Landline</span>
-                </div>
-                <div
-                  className={`image-item ${
-                    selectedService === "Broadband" ? "active" : ""
-                  }`}
-                  onClick={() => handleServiceClick("Broadband")}
-                >
-                  <img src={Brodband} alt="Broadband" />
-                  <span>Broadband</span>
-                </div>
-                <div
-                  className={`image-item ${
-                    selectedService === "Fasttag" ? "active" : ""
-                  }`}
-                  onClick={() => handleServiceClick("Fasttag")}
-                >
-                  <img src={Fasttag} alt="Fasttag" />
-                  <span>Fasttag</span>
-                </div>
-                <div
-                  className={`image-item ${
-                    selectedService === "Electricity" ? "active" : ""
-                  }`}
-                  onClick={() => handleServiceClick("Electricity")}
-                >
-                  <img src={Electricity} alt="Electricity" />
-                  <span>Electricity</span>
-                </div>
-                <div
-                  className={`image-item ${
-                    selectedService === "Cylinder" ? "active" : ""
-                  }`}
-                  onClick={() => handleServiceClick("Cylinder")}
-                >
-                  <img src={Cylinder} alt="Cylinder" />
-                  <span>Cylinder</span>
-                </div>
-                <div className="image-item more" onClick={handleMoreClick}>
-                  <span className="image-circle">
-                    <img src={more} alt="more" />
-                  </span>
-                  <span>More</span>
-                </div>
-              </div>
+        <Notification
+          message="🚀 Now live: Prepaid Recharge is Live! Other exciting features coming soon. Stay tuned! 🎉"
+        />
+        <div className="content-container py-8">
+          <div className="form-banner-card w-full h-full flex gap-4 px-8 py-7">
+            <div className="banner-card w-1/2">
+              <img src={BannerWeb} alt="" />
             </div>
-            <div className="box2">
-              {selectedService === "Recharge" && <MobileRecharge />}
-              {selectedService === "DTH" && <Dth />}
-              {/* You can add more conditionals here for other services if needed */}
+            <div className="form-card flex-1 h-full">
+              <RechargeAndBills title="Recharge & Pay Bills" />
             </div>
-          </div>
-          <div className="right-box">
-            <img src={BannerMobile} alt="Banner" className="banner-image" />
           </div>
         </div>
       </div>
@@ -152,19 +70,21 @@ const Landing = () => {
             <h2 className="title">Who Are We</h2>
             <div className="dash"></div>
           </div>
-          <div className="about-us-details">
-            <p>
-              At NextGen Solution, we offer a comprehensive online digital
-              platform for all your prepaid mobile recharge and bill payment
-              needs. From prepaid recharges and postpaid bill payments to DTH,
-              electricity, landline, gas, water, and broadband services, our
-              platform covers it all, providing a seamless and hassle-free
-              experience.
-            </p>
+          <div class="about-us-details">
+            <div class="images-wrapper">
+              <img src={Landing2} alt="Image 2" />
+              <div class="  ">
+                <p>
+                  At NextGen Solution, we offer a comprehensive online digital
+                  platform for all your prepaid mobile recharge and bill payment
+                  needs. From prepaid recharges and postpaid bill payments to
+                  DTH, electricity, landline, gas, water, and broadband
+                  services, our platform covers it all, providing a seamless and
+                  hassle-free experience.
+                </p>
+              </div>
+            </div>
           </div>
-          {/* <div className="slider-container">
-            <SimpleSlider />
-          </div> */}
 
           {/* about us */}
 
@@ -174,19 +94,12 @@ const Landing = () => {
             <div className="dash"></div>
           </div>
           <div className="nextgen-about-details">
-            {/* <div className="about-one"> */}
-            {/* <p>
-              NextGen Solution Online Services is an emerging digital platform
-              designed to be your one-stop destination for all utility payments
-              and mobile recharges. As we embark on our journey, our mission is
-              to provide a seamless and convenient experience for prepaid mobile
-              recharges, bill payments, and various utility services.
-            </p> */}
-            {/* </div> */}
-            {/* <div className="about-two"> */}
+            <div className="about-img-wrapper">
+              <img src={AboutUs} alt="About Nextgen Solution" />
+            </div>
             <p>
-               Nextgen Solution Online Services is one of India’s first
-              multi mobile operator, instant pre-paid recharge portal. Nextgen
+              Nextgen Solution Online Services is one of India’s first multi
+              mobile operator, instant pre-paid recharge portals. Nextgen
               Solution Online Services provides recharge service for all major
               prepaid mobile service providers in India. We aim at empowering
               our users by providing quick and convenient prepaid mobile
@@ -196,18 +109,16 @@ const Landing = () => {
               satisfaction should be the primary objective of any successful
               company.
             </p>
-            {/* </div> */}
           </div>
 
           {/* Mobile container */}
-          <div className="mob-rch-container">
-            <div className="purple-bg"></div>
-            <div className="mob-details">
-              <div className="mob-rch-title">
-                <h2>Mobile Reacharge</h2>
-                <div className="dash"></div>
-              </div>
-              <div className="mob-rch-info">
+          <div className="mob-details">
+            <div className="dash"></div>
+            <h2 className="title">Mobile Recharge</h2>
+            <div className="dash"></div>
+            <div className="mob-rch-info">
+              <img src={Landing1} alt="Image 1" className="img_mobile" />
+              <div class="text-wrapper">
                 <p>
                   At NextGen Solution, we provide online prepaid mobile
                   recharges and bill payments for all major telecom operators.

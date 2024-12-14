@@ -6,6 +6,7 @@ import { MPININPUT } from '../MPin/MPinInput';
 import OtpInput from '../../components/core/OtpInput/OtpInput';
 import API from "../../services/apiService"; // Import API service
 import { notification } from 'antd';
+import axios from 'axios';
 
 const OTPVerify = () => {
     const { handleSubmit, setValue, watch } = useForm({
@@ -18,6 +19,7 @@ const OTPVerify = () => {
     const [accessToken,setAccessToken] = useState(null)
     const location = useLocation()
     const navigate = useNavigate()
+    const { number, isDeviceIdMatch } = location.state || {}; // Extract isDeviceIdMatch
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const { otp } = watch()
@@ -50,9 +52,17 @@ const OTPVerify = () => {
                 });
                 console.log(response,"---")
                 if (response?.data?.status === "success") {
-                    localStorage.setItem('accessToken', response?.data?.response[0]?.accessToken);
-                    navigate("/create-account");
-                }
+                    localStorage.setItem(
+                      "accessToken",
+                      response?.data?.response[0]?.accessToken
+                    );
+          
+                    // Conditional navigation based on isDeviceIdMatch
+                    if (isDeviceIdMatch === false) {
+                      navigate("/create-account");
+                    } else {
+                      navigate("/home"); // Navigate to the home page if isDeviceIdMatch is true
+                    }}
             } catch (err) {
                 console.error( err?.data?.message);
                 notification.error(

@@ -18,7 +18,8 @@ const Input = (props) => {
                             position: "absolute",
                             top: "-5px",
                             left: "15px",
-                            background: "white",
+                            background: "#EDE5FF",
+                            color:"black"
                         } : {}
                     }
                     className={"text-sm px-1 " + (props?.labelClass)} htmlFor={props.id}
