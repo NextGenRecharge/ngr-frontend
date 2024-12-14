@@ -1,0 +1,28 @@
+.scroll-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    /* background-color: #EDE5FF; */
+    /* border: 1px solid #ddd; */
+    padding: 10px 0;
+    position: relative;
+  }
+  
+  .scroll-content {
+    display: inline-block;
+    animation: scroll-left 30s linear infinite;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Keyframes for scrolling effect */
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  

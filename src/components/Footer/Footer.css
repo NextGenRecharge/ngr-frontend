@@ -1,7 +1,9 @@
 .footer {
-    background-color: #551a94;
-    padding: 20px 0;
+  background-image: linear-gradient(180deg, #EDE5FF, #EDE5FF);
+  backdrop-filter: blur(5px);   
+   padding: 20px 0;
     text-align: left;
+    color: black;
   }
   
   .footer-container {
@@ -11,12 +13,14 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    color: white;
+    color: black;
   }
   
   .footer-column {
     flex: 1;
     margin: 0 20px;
+    color: black;
+
   }
   
   .footer-logo {
@@ -27,8 +31,10 @@
   .footer-line {
     width: 100%;
     border: 0;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid black;
     margin: 10px 0;
+    color: black;
+
   }
   
   .footer-menu {
@@ -38,6 +44,8 @@
   
   .footer-menu li {
     margin-bottom: 10px;
+    color: black;
+
   }
   
   .footer-menu li:hover {
@@ -47,10 +55,13 @@
   
   .footer h4 {
     margin-bottom: 10px;
+    color: black;
+
   }
   
   .footer-column p {
     margin: 5px 0;
+    color: black;
   }
   
   @media (max-width: 768px) {
