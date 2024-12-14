@@ -29,7 +29,8 @@ const MobileInput: React.FC<MobileInputProps> = (props) => {
     const {
         mobileNumber,
         onMobileNumberChange,
-        className = ''
+        className = '',
+        register
     } = props
 
     const handleMobileNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,13 +45,13 @@ const MobileInput: React.FC<MobileInputProps> = (props) => {
         <div className={`mobile-input-container ${className}`}>
             <span className="country-code-select flex justify-center items-center" ><IndianFlag /></span>
             <input
+                {...register}
                 autoFocus={props?.autoFocus}
                 name='phoneNumber'
                 type="tel"
-                onChange={handleMobileNumberChange}
+                onChange={handleMobileNumberChange}     
                 className="mobile-number-input"
                 placeholder="Enter mobile number"
-                // {...register('phoneNumber', { required: 'Phone number is required' })}
                 value={mobileNumber}
             />
         </div>
