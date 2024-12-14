@@ -15,7 +15,7 @@ import TermsCondition from "../pages/TermsCondition/TermsCondition";
 import WithNavbar from '../components/WithNavbar/WithNavbar';
 import Dashboard from '../components/Dashboard/Dashboard';
 import Subscription from '../components/Subscription/Subscription';
-
+import RechargePlans from "../components/RechargePlans/RechargePlans";
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 const Routing = () => {
     return (
@@ -32,6 +32,8 @@ const Routing = () => {
                     <Route path='/mpin' element={<MPin />} />
                     <Route path='/create-account' element={<CreateAccount />} />
                     <Route path='/account-created' element={<AccountSuccessful />} />
+                    <Route path="/recharge-plans" element={<RechargePlans />} />
+
                 </Route>
                 <Route path="/login" element={<Login />} />
                 <Route element={<PrivateRoute />} >
