@@ -1,81 +1,60 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import "./RechargePlans.css";
+import { Button, Modal, Tabs } from "antd";
 
-const RechargePlans = () => {
-  // Sample plan categories
-  const categories = [
-    "Smart Offers",
-    "Jio Phone",
-    "Jio Bharat",
-    "Unlimited",
-    "Data Add On",
-    "Top Up",
-    "Combo Plans",
-    "International Roaming",
-  ];
+const RechargePlans = (props) => {
+  const { plansData, open, loading, onClose } = props
 
-  // Sample recharge plans data
-  const plans = [
-    {
-      id: 1,
-      price: "₹ 1899",
-      validity: "336 Days",
-      data: "24 GB",
-      benefits:
-        "Pack Validity - 336 days, Data - 24 GB, Voice - Unlimited, SMS - 3600",
-    },
-    {
-      id: 2,
-      price: "₹ 1199",
-      validity: "84 Days",
-      data: "3 GB/Day",
-      benefits: "Voice: Unlimited Calls | SMS : 100 SMS/day",
-    },
-    {
-      id: 3,
-      price: "₹ 1049",
-      validity: "84 Days",
-      data: "2 GB/Day",
-      benefits: "Voice - Unlimited, SMS - 100 SMS/day",
-    },
-  ];
-
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
+  const tabData = useMemo(() => {
+    return Object.entries(plansData).map(([key, value]) => {
+      const [tab] = value
+      return {
+        label: tab.title,
+        key: tab.title,
+        children: <div className="h-[70vh] overflow-y-auto">
+          {
+            tab?.data?.map((plan, i) => {
+              return <div key={i} className="plan-card">
+                <div className="plan-info">
+                  <p className="price">₹&nbsp;{plan.price}</p>
+                  <p className="validity">{plan.validity}</p>
+                  <p className="benefits">{plan.description}</p>
+                </div>
+                <div className="h-full items-end text-end">
+                  <button className="select-plan-button">Select Plan</button>
+                </div>
+              </div>
+            })
+          }
+        </div>
+      };
+    })
+  }, [plansData])
 
   return (
-    <div className="container">
-      <h2>Browse Plans</h2>
-      <div className="tab-container">
-        {categories.map((category, index) => (
-          <div
-            key={index}
-            className={`tab ${activeCategory === category ? "active" : ""}`}
-            onClick={() => setActiveCategory(category)}
-          >
-            {category}
-          </div>
-        ))}
+    <Modal
+      title={<p>Mobile Prepaid Plans</p>}
+      style={{
+        height: "80vh",
+        top: "20px"
+      }}
+      className="recharge-plan-modal"
+      footer={null}
+      loading={loading}
+      open={open}
+      onCancel={(e) => onClose?.(e)}
+    >
+      <div className="w-full">
+        <Tabs
+          defaultActiveKey="1"
+          // tabPosition={"top"}
+          style={{
+            height: 220,
+          }}
+          items={tabData}
+        />
       </div>
-
-      <div className="plans-container">
-        {plans.map((plan) => (
-          <div key={plan.id} className="plan-card">
-            <div className="plan-info">
-              <p className="price">{plan.price}</p>
-              <p className="validity">{plan.validity} Validity</p>
-              <p className="data">{plan.data} Data</p>
-              <p className="benefits">{plan.benefits}</p>
-            </div>
-            <button className="select-plan-button">Select Plan</button>
-          </div>
-        ))}
-      </div>
-
-      <div className="disclaimer">
-        <strong>Disclaimer:</strong> While we support most recharges, we request
-        you to verify with your operator once before proceeding.
-      </div>
-    </div>
+    </Modal>
   );
 };
 

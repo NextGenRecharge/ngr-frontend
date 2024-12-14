@@ -33,7 +33,7 @@ const Routing = () => {
                     <Route path='/mpin' element={<MPin />} />
                     <Route path='/create-account' element={<CreateAccount />} />
                     <Route path='/account-created' element={<AccountSuccessful />} />
-                    <Route path="/recharge-plans" element={<RechargePlans />} />
+                    {/* <Route path="/recharge-plans" element={<RechargePlans />} /> */}
 
                 </Route>
                 <Route path="/login" element={<Login />} />

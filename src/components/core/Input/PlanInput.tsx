@@ -4,27 +4,24 @@ import "./Input.css";
 
 interface PlanInputProps {
     onChange: (number: string) => void;
-    onClick:(number:string)=>void;
+    onCheckPlanClick?: Function;
     register: any;
     className?: string;
     value?: string;
+    readOnly?: boolean
 }
 
 const PlanInput: React.FC<PlanInputProps> = ({
     value,
     onChange,
     register,
-    onClick,
-    className = "",
+    className = '',
+    onCheckPlanClick,
+    readOnly
 }) => {
-    const navigate = useNavigate();
-
+    
     const handlePlanInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(event.target.value);
-    };
-
-    const handleCheckPlansClick = () => {
-        navigate("/recharge-plans");
     };
 
     return (
@@ -37,13 +34,10 @@ const PlanInput: React.FC<PlanInputProps> = ({
                 onChange={handlePlanInput}
                 className="plan-input h-full"
                 placeholder="Amount"
-                {...register("plan", { required: "plan is required" })}
+                readOnly={readOnly}
+                {...register}
             />
-            <div
-                className="check-plan h-full"
-                onClick={handleCheckPlansClick}
-                role="button"
-            >
+            <div onClick={(e) => onCheckPlanClick?.(e)} className="check-plan h-full">
                 Check Plans
             </div>
         </div>
