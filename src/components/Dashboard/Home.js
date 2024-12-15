@@ -9,7 +9,7 @@ import Electricity from "../../asset/Electricity.png";
 import Cylinder from "../../asset/Cylinder.png";
 import more from "../../asset/more.png";
 import BannerMobile from "../../asset/BannerMobile.png";
-import BannerWeb from "../../asset/images/banner.png";
+import BannerWeb from "../../asset/images/banner_logo.png";
 import MobileRecharge from "../MobileRecharge/MobileRecharge";
 import Dth from "../Dth/Dth";
 import "./Home.css";
