@@ -11,7 +11,7 @@ const MyAccount = () => {
   // State for user details
   const accessToken = localStorage.getItem("accessToken");
   const [user, setUser] = useState({});
-
+console.log(accessToken,"accessToken")
   const getUserDetails = async () => {
     try {
       const payload = {
@@ -19,7 +19,6 @@ const MyAccount = () => {
       };
       const response = await API.get(
         "/client/get_details",
-        { payload: [payload] },
         {
           headers: {
             "Content-Type": "application/json",
@@ -30,7 +29,7 @@ const MyAccount = () => {
       console.log(response, "response");
       if (response.status === 200) {
         console.log(response, "response");
-        setUser(response?.response?.data.user); // Update the user state with API response
+        setUser(response?.data?.response[0]?.personalDetails[0]); // Update the user state with API response
       } else {
         console.log(response, "response");
         notification.error({
@@ -59,15 +58,15 @@ const MyAccount = () => {
         <div className="avatar"></div>
         <div className="input-group">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" value={user.name || ""} readOnly />
+          <input type="text" id="name" value={user.fullName || ""} readOnly />
         </div>
         <div className="input-group">
           <label htmlFor="mobile">Mobile Number</label>
-          <input type="text" id="mobile" value={user.mobile || ""} readOnly />
+          <input type="text" id="mobile" value={user.mobileNo || ""} readOnly />
         </div>
         <div className="input-group">
           <label htmlFor="email">Email ID</label>
-          <input type="email" id="email" value={user.email || ""} readOnly />
+          <input type="email" id="email" value={user.emailId || ""} readOnly />
         </div>
         <button className="btn">Update</button>
       </div>

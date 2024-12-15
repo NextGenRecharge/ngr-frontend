@@ -50,6 +50,7 @@
     border-radius: 5px;
     background: #f9f9f9;
     font-size: 14px;
+    height: 35px;
   }
   
   .input-group input[disabled] {

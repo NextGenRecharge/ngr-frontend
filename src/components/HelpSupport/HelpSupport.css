@@ -1,0 +1,51 @@
+.help-support-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer-column {
+    text-align: left;
+  }
+  
+  .footer-heading {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .footer-line {
+    border: none;
+    height: 1px;
+    background-color: #1b1919;
+    margin-bottom: 20px;
+  }
+  
+  .footer-item {
+    font-size: 16px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .footer-icon {
+    font-size: 20px;
+    color: #08c;
+    margin-right: 10px;
+  }
+  
+  .email-link {
+    color: #08c;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .email-link:hover {
+    color: #0056b3;
+  }
+  
