@@ -17,8 +17,13 @@ import AutorenewIcon from '@mui/icons-material/Autorenew';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import SupportIcon from '@mui/icons-material/Support';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ onMenuClick }) => {
+  const navigate = useNavigate();
+  const onMenuClick = (path) => {
+    navigate(path); // Navigate to the selected path
+  };
   return (
     <Drawer
       variant="permanent"
@@ -32,7 +37,7 @@ const Sidebar = ({ onMenuClick }) => {
       <Box sx={{ overflow: 'auto' }}>
         <List>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => onMenuClick('Home')}>
+            <ListItemButton onClick={() => onMenuClick('/home')}>
               <ListItemIcon>
                 <AccountCircleIcon />
               </ListItemIcon>
@@ -40,7 +45,7 @@ const Sidebar = ({ onMenuClick }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => onMenuClick('Dashboard')}>
+            <ListItemButton onClick={() => onMenuClick('/dashboard')}>
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
@@ -48,7 +53,7 @@ const Sidebar = ({ onMenuClick }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => onMenuClick('Plan')}>
+            <ListItemButton onClick={() => onMenuClick('/plan')}>
               <ListItemIcon>
                 <AutorenewIcon />
               </ListItemIcon>
@@ -56,7 +61,7 @@ const Sidebar = ({ onMenuClick }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => onMenuClick('History')}>
+            <ListItemButton onClick={() => onMenuClick('/history')}>
               <ListItemIcon>
                 <AccountBalanceWalletIcon />
               </ListItemIcon>
@@ -64,7 +69,7 @@ const Sidebar = ({ onMenuClick }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => onMenuClick('Support')}>
+            <ListItemButton onClick={() => onMenuClick('/support')}>
               <ListItemIcon>
                 <SupportIcon />
               </ListItemIcon>
@@ -72,7 +77,7 @@ const Sidebar = ({ onMenuClick }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => onMenuClick('Logout')}>
+            <ListItemButton onClick={() => onMenuClick('/logout')}>
               <ListItemIcon>
                 <LogoutIcon />
               </ListItemIcon>

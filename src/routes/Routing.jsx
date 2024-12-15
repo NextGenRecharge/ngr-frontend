@@ -18,6 +18,7 @@ import Subscription from '../components/Subscription/Subscription';
 import RechargePlans from "../components/RechargePlans/RechargePlans";
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 import MyAccount from '../components/core/MyAccount/MyAccount';
+import HelpSupport from '../components/HelpSupport/HelpSupport';
 const Routing = () => {
     return (
         <Router>
@@ -33,7 +34,6 @@ const Routing = () => {
                     <Route path='/mpin' element={<MPin />} />
                     <Route path='/create-account' element={<CreateAccount />} />
                     <Route path='/account-created' element={<AccountSuccessful />} />
-                    {/* <Route path="/recharge-plans" element={<RechargePlans />} /> */}
 
                 </Route>
                 <Route path="/login" element={<Login />} />
@@ -43,6 +43,7 @@ const Routing = () => {
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/subscription" element={<Subscription />} />
                         <Route path="/my-account" element={<MyAccount />} />
+                        <Route path="/support" element={<HelpSupport />} />
                         <Route path="*" element={<div>Page Not found</div>} />
                     </Route>
                 </Route>
