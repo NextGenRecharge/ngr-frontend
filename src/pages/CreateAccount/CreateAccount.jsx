@@ -20,10 +20,10 @@ const CreateAccount = () => {
     });
 
     const navigate = useNavigate();
-    const accessToken = localStorage.getItem('accessToken');
 
     // Handle form submission
     const onSubmit = async (formData) => {
+        const accessToken = localStorage.getItem('accessToken');
         try {
             const payload = {
                 firstName: formData.firstName,
@@ -36,18 +36,20 @@ const CreateAccount = () => {
                 refReferralCode: formData.referralCode,
             };
             await API.post('/client/submit_details', { payload: [payload] },
-              { headers: { 
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${accessToken}` // Use the token here
-            }}
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${accessToken}` // Use the token here
+                    }
+                }
             );
-            navigate('/account-created');
+            navigate('/home');
         } catch (error) {
             console.error('Error submitting details:', error);
             notification.error(
                 error.response?.message ||
-                  "An error occurred. Please try again."
-              );
+                "An error occurred. Please try again."
+            );
         }
     };
 
@@ -65,25 +67,25 @@ const CreateAccount = () => {
                         <div className='form-container'>
                             <div className='w-full flex gap-6 justify-between flex-col'>
                                 <div className='w-full flex flex-row gap-6'>
-                                <Input
-                                    autoFocus
-                                    placeholder="First Name"
-                                    labelType="legend"
-                                    label="Enter your Name*"
-                                    labelClass="text-gray-500"
-                                    className="h-[53px]"
-                                    register={register('firstName', { required: "First Name is required" })}
-                                    helperText={errors.firstName && errors.firstName.message}
-                                />
-                                <Input
-                                    placeholder="Last Name"
-                                    labelType="legend"
-                                    label="Enter Last Name"
-                                    labelClass="text-gray-500"
-                                    className="h-[53px]"
-                                    register={register('lastName', { required: "Last Name is required" })}
-                                    helperText={errors.lastName && errors.lastName.message}
-                                />
+                                    <Input
+                                        autoFocus
+                                        placeholder="First Name"
+                                        labelType="legend"
+                                        label="Enter your Name*"
+                                        labelClass="text-gray-500"
+                                        className="h-[53px]"
+                                        register={register('firstName', { required: "First Name is required" })}
+                                        helperText={errors.firstName && errors.firstName.message}
+                                    />
+                                    <Input
+                                        placeholder="Last Name"
+                                        labelType="legend"
+                                        label="Enter Last Name"
+                                        labelClass="text-gray-500"
+                                        className="h-[53px]"
+                                        register={register('lastName', { required: "Last Name is required" })}
+                                        helperText={errors.lastName && errors.lastName.message}
+                                    />
                                 </div>
                                 <Input
                                     label="Enter your Email*"

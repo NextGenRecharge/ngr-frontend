@@ -35,7 +35,7 @@ const MobileRecharge = (props) => {
 
     const radioOptions = [
         { value: 'prepaid', label: 'Prepaid' },
-        { value: 'postpaid', label: 'Postpaid' }
+        { value: 'postpaid', label: 'Postpaid', disabled: true }
     ];
 
     function handleMobileChange(e) {
@@ -110,7 +110,9 @@ const MobileRecharge = (props) => {
                         activeClass="recharge-type-item-active"
                         value={type}
                         onChange={(item) => {
-                            setValue("type", item.value)
+                            if (!item.disabled) {
+                                setValue("type", item.value)
+                            }
                         }}
                         renderItem={(item) => {
                             return <span className='flex items-center justify-center'>
