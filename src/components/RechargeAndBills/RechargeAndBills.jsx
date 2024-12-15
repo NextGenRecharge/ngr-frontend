@@ -113,7 +113,7 @@ const RechargeAndBills = (props) => {
         <div className='services-content-container w-full h-full flex flex-1 flex-col gap-4'>
             <div className='services-form-header flex justify-between w-full'>
                 <h2 className='text-2xl '>{props.title}</h2>
-                <div className='text-primary cursor-pointer'>View All</div>
+                {/* <div className='text-primary cursor-pointer'>View All</div> */}
             </div>
             <div className='w-full flex justify-between gap-3'>
                 {

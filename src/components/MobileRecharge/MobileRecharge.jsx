@@ -71,6 +71,10 @@ const MobileRecharge = (props) => {
         }
     }
 
+    function handlePlanSelect(plan) {
+        setValue("plan", plan.price)
+        setOpenPlans(false)
+    }
 
     const { stateOptions, providerOptions } = useMemo(() => {
         return {
@@ -119,7 +123,7 @@ const MobileRecharge = (props) => {
                             </span>
                         }}
                     />
-                    {errors.type && <p className="text-sm text-red-600">{errors.type.message}</p>}
+                    {errors.type && <span className="text-sm text-red-600">{errors.type.message}</span>}
                 </div>
                 <div>
                     <MobileInput
@@ -133,7 +137,7 @@ const MobileRecharge = (props) => {
                         }}
                         className='h-[45px]'
                     />
-                    {errors.phoneNumber && <p className=" text-sm text-red-600">{errors.phoneNumber.message}</p>}
+                    {errors.phoneNumber && <span className=" text-sm text-red-600">{errors.phoneNumber.message}</span>}
                 </div>
                 <div>
                     <Controller
@@ -162,8 +166,7 @@ const MobileRecharge = (props) => {
                             />
                         )}
                     />
-
-                    {errors.operator && <p className=" text-sm text-red-600">{errors.operator.message}</p>}
+                    {errors.operator && <span className=" text-sm text-red-600">{errors.operator.message}</span>}
                 </div>
                 <div>
                     <Controller
@@ -184,16 +187,17 @@ const MobileRecharge = (props) => {
                             />
                         )}
                     />
-                    {errors.circle && <p className=" text-sm text-red-600">{errors.circle.message}</p>}
+                    {errors.circle && <span className=" text-sm text-red-600">{errors.circle.message}</span>}
                 </div>
                 <div>
                     <PlanInput
+                        name='plan'
                         readOnly
-                        className='h-[45px]'
+                        className='h-[45px] cursor-none'
                         register={{ ...register('plan', { required: 'Plan is required' }) }}
                         onCheckPlanClick={handleCheckPlans}
                     />
-                    {errors.plan && <p className=" text-sm text-red-600">{errors.plan.message}</p>}
+                    {errors.plan && <span className=" text-sm text-red-600">{errors.plan.message}</span>}
                 </div>
                 <button type="submit" className="w-full h-12 p-2 mt-1 bg-primary text-secondary rounded-lg">
                     Submit
@@ -206,6 +210,7 @@ const MobileRecharge = (props) => {
                     open={openPlans}
                     plansData={plansData}
                     onClose={() => setOpenPlans(false)}
+                    onSelect={handlePlanSelect}
                 />
             }
         </div>
