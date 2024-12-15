@@ -11,6 +11,7 @@ import HomeIcon from "../../asset/icons/home_icon.svg"
 import Dashboard from "../../asset/icons/dashboard_icon.svg"
 import SettingIcon from "../../asset/icons/setting.svg"
 import RefferralIcon from "../../asset/icons/referral.svg"
+import { useLocation } from 'react-router-dom';
 
 const { Footer } = Layout;
 
@@ -38,6 +39,8 @@ const sidebarData = [
 ]
 
 const WithNavbar = () => {
+    const location = useLocation();
+    const activePath = location.pathname;
     const mainRef = useRef(null)
     const [isScrolled, setIsScrolled] = useState(false)
     const navigate = useNavigate()
@@ -54,14 +57,16 @@ const WithNavbar = () => {
     }
 
     function handleSideSelection(item) {
-        console.log('item', item)
-        setActiveSideBar(item.path)
-        // navigate(item.path)
+        console.log('item', item);
+        setActiveSideBar(item.path);
+        navigate(item.path); // Enable route changes
     }
+    
     function handleNavSelection(item) {
-        console.log('item', item)
-        // navigate(item.path)
+        console.log('item', item);
+        navigate(item.path); // Enable route changes
     }
+    
 
     return (
         <Layout onScroll={handleScroll} className="flex flex-col dashboard-page-container">
