@@ -19,6 +19,7 @@ import RechargePlans from "../components/RechargePlans/RechargePlans";
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 import MyAccount from '../components/core/MyAccount/MyAccount';
 import HelpSupport from '../components/HelpSupport/HelpSupport';
+import MyEarnings from '../components/Dashboard/MyEarnings/MyEarnings';
 const Routing = () => {
     return (
         <Router>
@@ -44,6 +45,7 @@ const Routing = () => {
                         <Route path="/subscription" element={<Subscription />} />
                         <Route path="/my-account" element={<MyAccount />} />
                         <Route path="/support" element={<HelpSupport />} />
+                        <Route path="/earnings" element={<MyEarnings />} />
                         <Route path="*" element={<div>Page Not found</div>} />
                     </Route>
                 </Route>
