@@ -24,3 +24,72 @@
 .active-sidebar{
     background-color: #e0d0ff
 }
+
+/* Customizing the position of the expand icon */
+.custom-expand-icon {
+    margin-left: 10px; /* Move the icon 10px to the right */
+  }
+  
+  /* Adjust title if needed */
+  .custom-title {
+    display: flex;
+    align-items: center;
+}
+
+.ant-tree-switcher {
+    order: 9999;
+}
+    
+/* App.css */
+
+  .sidebar-menu {
+    background-color: transparent !important; /* Ensure sidebar-menu has the same dark background */
+  }
+  
+  .sidebar-menu .ant-menu-item {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000 !important; 
+  }
+  .sidebar-menu .ant-menu-submenu-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000 !important; 
+  }
+  .sidebar-menu .ant-menu-item:hover {
+    background-color: #e0d0ff;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  }
+  
+  .sidebar-menu .ant-menu-item-selected {
+    background-color: #e0d0ff !important; /* Highlight selected item */
+    color: #5F259F !important;
+    font-weight: 600;
+  }
+  
+  .sidebar-menu .ant-menu-submenu-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: #6e37a9; /* Lighter text color for submenu titles */
+  }
+  
+  .sidebar-menu .ant-menu-submenu-title:hover {
+    background-color: #e0d0ff;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  }
+  
+  /* .sidebar-menu .ant-menu-submenu.ant-menu-submenu-open .ant-menu-submenu-title {
+    background-color: #3a3e47; 
+    color: #fff;
+  }
+  
+  .sidebar-menu .ant-menu-submenu .ant-menu-item {
+    font-size: 14px;
+    font-weight: 400;
+    color: #b0b7c3; 
+  }
+  
+  .sidebar-menu .ant-menu-submenu .ant-menu-item:hover {
+    background-color: #3a3e47;
+    color: #fff;
+  } */

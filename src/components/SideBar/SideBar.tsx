@@ -1,6 +1,9 @@
-import React, { ReactNode, useCallback } from 'react'
+import React, { memo, useCallback, useMemo, useState } from 'react'
 import "./SideBar.css"
+import { Layout, Menu } from 'antd';
 
+const { Sider } = Layout;
+const { SubMenu } = Menu;
 interface ISideBarProps {
     sidebarData: any[];
     labelKey?: string;
@@ -13,6 +16,7 @@ interface ISideBarProps {
     iconClass?: string;
     value: any;
 }
+
 
 const SideBar = (props: ISideBarProps) => {
 
@@ -28,35 +32,27 @@ const SideBar = (props: ISideBarProps) => {
         value
     } = props;
 
-    const handleItemClick = useCallback((e: React.MouseEvent<HTMLDivElement>, item: any) => {
-        console.log('item', item)
-        e.preventDefault?.()
-        onSelect?.(item)
-    }, [onSelect])
-
+    const handleItemClick = useCallback((e) => {
+        onSelect?.(e)
+    }, [])
 
     return (
         <div className={`sidebar-container ${containerClass}`}>
-            {
-                sidebarData?.map((item, i) => {
-                    return (
-                        <div
-                            key={i}
-                            onClick={(e) => handleItemClick(e, item)}
-                            className={`sidebar-item ${itemClass} ${value === item[valueKey] ? "active-sidebar" : ""}`}
-                        >
-                            <div className={`w-[30px] ${iconClass}`}>
-                                {item.icon && <img src={item.icon} alt='' />}
-                            </div>
-                            <div className={`${labelClass}`}>
-                                {item[labelKey] && <span>{item[labelKey]}</span>}
-                            </div>
-                        </div>
-                    )
-                })
-            }
+            <Layout style={{ minHeight: '100vh' }} className='bg-transparent'>
+                <Sider width={256} className='bg-transparent' >
+                    <Menu
+                        mode="inline"
+                        selectedKeys={value}
+                        onSelect={handleItemClick} // Handle selection
+                        defaultOpenKeys={['2', '8']} // Automatically open submenus
+                        style={{ height: '100%', borderRight: 0 }}
+                        items={sidebarData}
+                        className='sidebar-menu'
+                    />
+                </Sider>
+            </Layout>
         </div>
     )
 }
 
-export default SideBar
+export default memo(SideBar)
