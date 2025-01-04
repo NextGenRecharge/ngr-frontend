@@ -1,6 +1,6 @@
 import { Layout } from 'antd'
-import React, { useRef, useState } from 'react'
-import { UserOutlined } from '@ant-design/icons'
+import React, { useCallback, useRef, useState } from 'react'
+import { DashboardOutlined, HomeOutlined, SettingOutlined, TransactionOutlined } from '@ant-design/icons'
 import logo from "../../asset/purple_logo.png"
 import { Outlet, useNavigate } from 'react-router-dom'
 import Footer1 from '../Footer/Footer'
@@ -17,26 +17,28 @@ const { Footer } = Layout;
 
 const sidebarData = [
     {
-        "label": "Home",
-        "path": "/home",
-        "icon": HomeIcon
+        key: '1',
+        label: 'Home',
+        path: "/home",
+        icon: <HomeOutlined />,
     },
     {
-        "label": "Dashboard",
-        "path": "/dashboard",
-        "icon": Dashboard,
+        key: '2',
+        label: 'Dashboard',
+        icon: <DashboardOutlined />,
+        children: [
+            { key: '5', label: 'My Earnings', path: "/earnings", },
+            { key: '3', label: 'My Referrals', path: "/referrals", },
+            { key: '4', label: 'My Transactions', path: "/transactions", },
+        ],
     },
     {
-        "label": "My Referrals",
-        "path": "/referrals",
-        "icon": RefferralIcon
+        key: '12',
+        label: 'Settings',
+        path: "/settings",
+        icon: <SettingOutlined />,
     },
-    {
-        "label": "Settings",
-        "path": "/settings",
-        "icon": SettingIcon
-    },
-]
+];
 
 const WithNavbar = () => {
     const location = useLocation();
@@ -56,17 +58,18 @@ const WithNavbar = () => {
         }
     }
 
-    function handleSideSelection(item) {
-        console.log('item', item);
-        setActiveSideBar(item.path);
-        navigate(item.path); // Enable route changes
-    }
-    
+    const handleSideSelection = useCallback((data) => {
+        console.log('data.item.props.path', data.item.props.path)
+        console.log('data', data);
+        setActiveSideBar([data.key])
+        navigate(data.item.props.path);
+    }, [])
+
     function handleNavSelection(item) {
         console.log('item', item);
         navigate(item.path); // Enable route changes
     }
-    
+
 
     return (
         <Layout onScroll={handleScroll} className="flex flex-col dashboard-page-container">
@@ -80,14 +83,8 @@ const WithNavbar = () => {
                         activeClass={("active-navigation ") + (isScrolled ? "sticky-nav" : "")}
                     />
                 </div>
-                {/* <div className="header-icons">
-                    <UserOutlined
-                        className="header-icon"
-                        style={{ fontSize: "20px" }}
-                    />
-                </div> */}
             </div>
-            <div className='bottom-main-container flex' ref={mainRef}>
+            <div className='bottom-main-container flex flex-1' ref={mainRef}>
                 <div className=''>
                     <SideBar
                         sidebarData={sidebarData}

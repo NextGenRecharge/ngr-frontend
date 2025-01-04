@@ -21,7 +21,7 @@ const RechargePlans = (props) => {
                   <p className="benefits">{plan.description}</p>
                 </div>
                 <div className="h-full items-end text-end">
-                  <button className="select-plan-button">Select Plan</button>
+                  <button className="select-plan-button" onClick={() => props?.onSelect?.(plan)}>Select Plan</button>
                 </div>
               </div>
             })
@@ -29,7 +29,7 @@ const RechargePlans = (props) => {
         </div>
       };
     })
-  }, [plansData])
+  }, [plansData, props])
 
   return (
     <Modal
