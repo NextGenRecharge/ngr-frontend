@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../asset/purple_logo.png";
 import Footer1 from "../Footer/Footer";
 import { Layout, theme } from "antd";
-import BannerWeb from "../../asset/images/banner.png";
+import BannerWeb from "../../asset/images/banner_logo.png";
 import RechargeAndBills from "../RechargeAndBills/RechargeAndBills";
 import Landing1 from "../../asset/landing1.png";
 import Landing2 from "../../asset/landing2.png";
