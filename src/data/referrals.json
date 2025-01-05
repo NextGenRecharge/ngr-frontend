@@ -1,0 +1,58 @@
+{
+    "status": "success",
+    "data": {
+        "panel": "myReferrals",
+        "summary": [
+            {
+                "title": "Total Referrals",
+                "value": "19"
+            },
+            {
+                "title": "Successful Referrrals",
+                "value": "15"
+            },
+            {
+                "title": "Pending Referrals",
+                "value": "4"
+            }
+        ],
+        "history": {
+            "title": "My Referrals",
+            "list": [
+                {
+                    "name": "John Doe",
+                    "title": "Successfully Referred",
+                    "phone": "+91-9877665520",
+                    "status": {
+                        "type": "success",
+                        "message": "Successfully Referred"
+                    },
+                    "date": "2024-11-09",
+                    "avatar": "https://example.com/avatar1.png"
+                },
+                {
+                    "name": "Jane Smith",
+                    "title": "Referral pending",
+                    "phone": "+91-7766539082",
+                    "status": {
+                        "type": "pending",
+                        "message": "Referral pending"
+                    },
+                    "date": "2024-11-09",
+                    "avatar": "https://example.com/avatar2.png"
+                },
+                {
+                    "name": "Alex Johnson",
+                    "title": "Referral Rejected",
+                    "phone": "+91-9877662220",
+                    "status": {
+                        "type": "rejected",
+                        "message": "Referral Expired"
+                    },
+                    "date": "2024-11-09",
+                    "avatar": "https://example.com/avatar3.png"
+                }
+            ]
+        }
+    }
+}

@@ -1,77 +1,90 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./MyEarnings.css";
-
+import TitleCard from "../../core/TitleCard/TitleCard";
+import BoxContainer from "../../core/BoxContainer/BoxContainer";
+import { ReactComponent as SettingIcon } from "../../../asset/icons/setting.svg"
+import ListCard from "../../core/ListCard/ListCard";
+import earningsData from "../../../data/earnings.json"
+import Arrow from "../../../asset/icons/Arrow";
+import { status } from "./earnings.constant";
+import { InfoCircleOutlined, Loading3QuartersOutlined } from "@ant-design/icons";
 const MyEarnings = () => {
-  const earningsData = [
-    { title: "Total Earnings", amount: "₹ 1999" },
-    { title: "Rewards Earned", amount: "₹ 1500" },
-    { title: "Available to Withdraw", amount: "₹ 499" },
-  ];
 
-  const transactions = [
-    {
-      type: "Cashback Credit",
-      date: "09/11/2024",
-      amount: "₹ 19.00",
-      description: "Mobile Recharge 9876543220",
-      status: "success", // success for green tick, fail for red arrow
-    },
-    {
-      type: "Cashback Credit",
-      date: "09/11/2024",
-      amount: "₹ 10.00",
-      description: "Electricity Bill Payment MH9876",
-      status: "success",
-    },
-    {
-      type: "Cashback Debit",
-      date: "09/11/2024",
-      amount: "₹ 50.00",
-      description: "Mobile Recharge 9876543220",
-      status: "fail",
-    },
-  ];
+  const [earnings, setEarnings] = useState({
+    summary: [],
+    history: {
+      title: "",
+      list: []
+    }
+  })
+
+  useEffect(() => {
+    setEarnings(earningsData.data)
+  }, [])
+
+  const getStatusIcon = (type) => {
+    const isPending = type === status.pending
+      ? <Loading3QuartersOutlined className="text-lg" />
+      : <Arrow />
+
+    return type === status.failed
+      ? <InfoCircleOutlined className="text-red-500 text-lg" />
+      : isPending
+  }
 
   return (
-    <div className="earnings-page">
-      {/* Top Earnings Summary */}
+    <div className="w-9/12 max-h-full px-10">
       <div className="earnings-container">
-        {earningsData.map((data, index) => (
-          <div key={index} className="earnings-card">
-            <h3 className="earnings-title">{data.title}</h3>
-            <p className="earnings-amount">{data.amount}</p>
-          </div>
-        ))}
+        <TitleCard list={earnings.summary} titleKey="title" subTitleKey="value" />
       </div>
-
-      {/* Transactions Section */}
-      <div className="transactions-container">
-        <div className="transactions-header">
-          <h2>My Earnings</h2>
-          <div className="filter-icon">⚙️</div>
-        </div>
-        <div className="transactions-list">
-          {transactions.map((transaction, index) => (
-            <div key={index} className="transaction-item">
-              <div className="transaction-details">
-                <h3 className="transaction-type">{transaction.type}</h3>
-                <p className="transaction-meta">
-                  <span>Date: {transaction.date}</span>
-                  <span>Amount: {transaction.amount}</span>
-                  <span>Description: {transaction.description}</span>
-                </p>
+      <BoxContainer
+        header={earnings.history.title}
+        icon={<SettingIcon />}
+        className="p-5 bg-secondary rounded-xl"
+      >
+        <ListCard
+          className="max-h-[500px] min-h-80 overflow-y-auto p-5"
+          list={earnings.history.list}
+          renderTitle={(item, i) => {
+            return (
+              <div className="flex justify-between items-center">
+                <div className="font-semibold text-lg ">
+                  {item?.title ?? ""}
+                </div>
+                <div>
+                  {
+                    getStatusIcon(item.status.type)
+                  }
+                </div>
               </div>
-              <div
-                className={`transaction-status ${
-                  transaction.status === "success" ? "success" : "fail"
-                }`}
-              >
-                {transaction.status === "success" ? "✔️" : "❌"}
+            )
+          }}
+          renderFooter={(item, i) => {
+            return (
+              <div className="flex justify-between items-center">
+                <div className="flex-1">
+                  <div className="text-sm text-gray-500 mb-1">
+                    Date
+                  </div>
+                  <span className="text-sm text-gray-700">{item?.date ?? ""}</span>
+                </div>
+                <div className="flex-1">
+                  <div className="text-sm text-gray-500  mb-1">
+                    Amount
+                  </div>
+                  <span className="font-semibold">{item?.amount ?? ""}</span>
+                </div>
+                <div className="flex-1">
+                  <div className="text-sm text-gray-500  mb-1">
+                    Description
+                  </div>
+                  <span className="font-semibold">{item?.status?.message ?? ""}</span>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
+            )
+          }}
+        />
+      </BoxContainer>
     </div>
   );
 };

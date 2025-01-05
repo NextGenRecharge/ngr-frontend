@@ -1,0 +1,85 @@
+{
+    "status": "success",
+    "data": {
+        "panel": "myTransactions",
+        "summary": [
+            {
+                "title": "Successful Transactions",
+                "value": "19"
+            },
+            {
+                "title": "In Progress",
+                "value": "15"
+            },
+            {
+                "title": "Failed Transaction",
+                "value": "4"
+            }
+        ],
+        "history": {
+            "title": "My Transactions",
+            "list": [
+                {
+                    "type": "walletTopup",
+                    "title": "Wallet Top-Up",
+                    "date": "2024-11-09",
+                    "amount": "₹ 500",
+                    "status": {
+                        "type": "success",
+                        "message": "Successfully Added"
+                    }
+                },
+                {
+                    "type": "walletTopup",
+                    "title": "Wallet Top-Up",
+                    "date": "2024-11-09",
+                    "amount": "₹ 500",
+                    "status": {
+                        "type": "failed",
+                        "message": "Server down"
+                    }
+                },
+                {
+                    "type": "withdrawl",
+                    "title": "Withdrawl",
+                    "date": "2024-11-09",
+                    "amount": "₹ 500",
+                    "status": {
+                        "type": "pending",
+                        "message": "Pending..."
+                    }
+                },
+                {
+                    "type": "withdrawl",
+                    "title": "Withdrawl",
+                    "date": "2024-10-15",
+                    "amount": "₹ 200",
+                    "status": {
+                        "type": "success",
+                        "message": "Successfully Withdrawl"
+                    }
+                },
+                {
+                    "type": "mobileRecharge",
+                    "title": "Mobile Recharge 9876543210",
+                    "date": "2024-10-15",
+                    "amount": "₹ 200",
+                    "status": {
+                        "type": "success",
+                        "message": "Successfully Withdrawl"
+                    }
+                },
+                {
+                    "type": "electricity",
+                    "title": "Electricity Bill Payment",
+                    "date": "2024-10-15",
+                    "amount": "₹ 200",
+                    "status": {
+                        "type": "failed",
+                        "message": "Payment failed"
+                    }
+                }
+            ]
+        }
+    }
+}
