@@ -1,0 +1,75 @@
+{
+    "status": "success",
+    "data": {
+        "panel": "myEarnings",
+        "summary": [
+            {
+                "title": "Total Earnings",
+                "value": "₹ 1999"
+            },
+            {
+                "title": "Rewards Earned",
+                "value": "₹ 1500"
+            },
+            {
+                "title": "Available to Withdraw",
+                "value": "₹ 499"
+            }
+        ],
+        "history": {
+            "title": "My Earnings",
+            "list": [
+                {
+                    "type": "cashback",
+                    "title": "Cashback",
+                    "date": "2024-11-09",
+                    "amount": "₹ 500",
+                    "status": {
+                        "type": "success",
+                        "message": "Successfully Added"
+                    }
+                },
+                {
+                    "type": "cashback",
+                    "title": "Cashback",
+                    "date": "2024-11-09",
+                    "amount": "₹ 500",
+                    "status": {
+                        "type": "failed",
+                        "message": "Invalid Coupon"
+                    }
+                },
+                {
+                    "type": "cashback",
+                    "title": "Cashback",
+                    "date": "2024-11-09",
+                    "amount": "₹ 500",
+                    "status": {
+                        "type": "pending",
+                        "message": "Pending..."
+                    }
+                },
+                {
+                    "type": "giftcard",
+                    "title": "Gift Card",
+                    "date": "2024-10-15",
+                    "amount": "₹ 200",
+                    "status": {
+                        "type": "failed",
+                        "message": "Failed..."
+                    }
+                },
+                {
+                    "type": "coins",
+                    "title": "Coins",
+                    "date": "2024-10-15",
+                    "amount": "₹ 200",
+                    "status": {
+                        "type": "success",
+                        "message": "Successfully Added"
+                    }
+                }
+            ]
+        }
+    }
+}
