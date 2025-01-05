@@ -5,6 +5,7 @@
     align-items: center;
     margin: 20px;
     background-color: #eae8e8; /* Optional light gray background */
+    height: fit-content;
   }
   
   /* Card styling */
