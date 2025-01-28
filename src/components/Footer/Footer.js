@@ -39,7 +39,7 @@ const Footer1 = () => {
           <h1>Contact Us</h1>
           <hr className="footer-line" />
           <p>Mobile: +91 9172269909</p>
-          <p>Email: support@nextgensolution.net.in</p>
+          <p>Email: support@nextgensuperapp.com</p>
           <p>
             Address: Nextgen Solution Online Services Chartha Road, Ankush
             Nagar, Beed, Maharashtra – 431122

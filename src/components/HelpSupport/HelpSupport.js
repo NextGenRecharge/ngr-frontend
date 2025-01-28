@@ -18,8 +18,8 @@ const HelpSupport = () => {
         </p>
         <p className="footer-item">
           <MailOutlined className="footer-icon" />
-          <a href="mailto:support@nextgensolution.net.in" className="email-link">
-            support@nextgensolution.net.in
+          <a href="mailto:support@nextgensuperapp.com" className="email-link">
+            support@nextgensuperapp.com
           </a>
         </p>
         <p className="footer-item">

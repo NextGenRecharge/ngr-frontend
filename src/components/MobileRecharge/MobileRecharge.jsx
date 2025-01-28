@@ -32,7 +32,7 @@ const MobileRecharge = (props) => {
         console.log(data);
         // Handle form submission
     };
-
+console.log(operator,"operator")
     const radioOptions = [
         { value: 'prepaid', label: 'Prepaid' },
         { value: 'postpaid', label: 'Postpaid', disabled: true }
@@ -77,6 +77,7 @@ const MobileRecharge = (props) => {
     }
 
     const { stateOptions, providerOptions } = useMemo(() => {
+
         return {
             stateOptions: categoryOptions?.state_names?.map?.(item => {
                 return {
@@ -94,7 +95,7 @@ const MobileRecharge = (props) => {
         }
     }, [categoryOptions?.providers, categoryOptions?.state_names])
 
-
+console.log(stateOptions,"stateOptions",providerOptions)
     return (
         <div className="recharge-container flex flex-col p-3 w-full h-full bg-transparent rounded-lg">
             {/* <div className="mb-6 text-start font-extrabold">
@@ -162,6 +163,7 @@ const MobileRecharge = (props) => {
                                         <div className='h-7 w-7' role="img" aria-label={option.data.provider_name} >
                                             <img src={option.data.provider_icon} alt='' />
                                         </div>
+                                   { console.log(option,"---")}
                                         {option.data.provider_name}
                                     </Space>
                                 )}

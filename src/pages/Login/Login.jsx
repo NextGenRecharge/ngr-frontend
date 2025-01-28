@@ -8,7 +8,9 @@ import TitleBanner from "../../components/TitleBanner/TitleBanner";
 import SecureLoginIcon from "../../asset/icons/SecureLoginIcon";
 import { Checkbox, notification } from "antd";
 import API from "../../services/apiService"; // Import API service
-
+notification.config({
+  placement: "top",
+});
 const Login = () => {
   const {
     register,
@@ -74,14 +76,20 @@ const Login = () => {
         );
         if (otpResponse.status === 200) {
           navigate("/otp-verify", { state: { number: mobileNumber , isDeviceIdMatch:data} });
-        }
+        } else {
+                notification.error({
+                  message: "Error",
+                  description: "Failed to verify otp.",
+                  duration: 5,
+                });
+              }
       }
     } catch (err) {
-      console.error(err.response?.message || err.message);
-      notification.error(
-        err.response?.message ||
-        "An error occurred. Please try again."
-      );
+     notification.error({
+             message: "Server Error",
+             description: "Unable to verify otp.",
+             duration: 5,
+           });
     } finally {
       setLoading(false);
     }

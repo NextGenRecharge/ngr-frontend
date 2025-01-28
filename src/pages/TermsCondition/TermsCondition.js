@@ -13,12 +13,12 @@ const TermsCondition = () => {
         users. This page states the Terms and Conditions under which you
         (Visitor) may visit this website:
         <a
-          href="https://NextGensolution.net.in"
+          href="https://nextgensuperapp.com"
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: "blue", textDecoration: "underline" }}
         >
-          https://NextGensolution.net.in
+          https://nextgensuperapp.com
         </a>
         .
       </p>
@@ -132,7 +132,7 @@ const TermsCondition = () => {
       <p>
         In many rare cases if you have not received the recharge and the refund
         has also not been provided to your E-Wallet, you can request for a
-        refund by contacting our customer support at support@nextgensolution.net.in
+        refund by contacting our customer support at support@nextgensuperapp.com
       </p>
     </div>
     

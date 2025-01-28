@@ -66,7 +66,7 @@ const RechargeAndBills = (props) => {
                 state_id: ""
             }
         }).then(res => {
-
+console.log(res,"res")
             const popularList = res?.data?.response?.[0]?.popular?.[0]?.services.filter(item => item.service_name !== "Mobile Postpaid") ?? []
             const firstService = popularList[0].service_id
             setServiceList(popularList)

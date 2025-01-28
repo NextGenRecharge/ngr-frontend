@@ -10,7 +10,7 @@ const ComingSoon = () => {
                         Electricity<br />
                         DTH<br />
                         FASTag<br />
-                        <span id="spare-time">too much more</span>
+                        <span id="spare-time">And much more</span>
                         <br />
                     </span>
                 </div>
