@@ -35,7 +35,7 @@ const OTPVerify = () => {
                             mobileNumber: location.state.number,
                             emailId: "sagarmangal10@gmail.com",
                             deviceId: "erueoiwr8493eiurq",
-                            imeiNumber: "",
+                            imeiNumber: "fjydy346365",
                             deviceType: "WEB",
                             uniqueCodeType: "MOBILE",
                             locationPermission: true,

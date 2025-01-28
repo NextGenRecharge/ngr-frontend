@@ -12,6 +12,7 @@ const MyAccount = () => {
   const [user, setUser] = useState({});
   const [bankAccount, setBankAccount] = useState("");
   const [ifsc, setIfsc] = useState("");
+  const [accountHolderName, setAccountHolderName] = useState("");
 
   // Fetch user details
   const getUserDetails = async () => {
@@ -48,12 +49,14 @@ const MyAccount = () => {
   const updateDetails = async () => {
     try {
       const payload = {
-        bankAccount,
-        ifsc,
+        accountNumber:bankAccount,
+        ifscCode:ifsc,
+        accountHolder:accountHolderName,
+        primaryBank:""
       };
-      const response = await API.put(
-        "/client/update_details",
-        payload,
+      const response = await API.post(
+        "/client/bank/submit_details",
+        {payload:[payload]},
         {
           headers: {
             "Content-Type": "application/json",
@@ -85,6 +88,9 @@ const MyAccount = () => {
     }
   };
 
+  const getBankDetails = async () => {
+  
+  }
   useEffect(() => {
     getUserDetails();
   }, []);
@@ -94,7 +100,7 @@ const MyAccount = () => {
       <div className="card">
         <div className="input-group">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" value={user.fullName || ""} readOnly />
+          <input type="text" id="name" value={user.clientName || ""} readOnly />
         </div>
         <div className="input-group">
           <label htmlFor="mobile">Mobile Number</label>
@@ -103,6 +109,11 @@ const MyAccount = () => {
         <div className="input-group">
           <label htmlFor="email">Email ID</label>
           <input type="email" id="email" value={user.emailId || ""} readOnly />
+        </div>
+        <div className="input-group">
+          <label htmlFor="accountHolder">Account Holder Name</label>
+          <input type="text" id="accountHolder" value={accountHolderName}
+            onChange={(e) => setAccountHolderName(e.target.value)}  />
         </div>
         <div className="input-group">
           <label htmlFor="bankaccount">Bank Account Number</label>

@@ -58,7 +58,7 @@ const Login = () => {
               mobileNumber: mobileNumber,
               emailId: "",
               deviceId: "erueoiwr8493eiurq",
-              imeiNumber: "",
+              imeiNumber: "fjydy346365",
               deviceType: "WEB",
               uniqueCodeType: "MOBILE",
               locationPermission: true,

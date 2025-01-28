@@ -26,14 +26,12 @@ const CreateAccount = () => {
         const accessToken = localStorage.getItem('accessToken');
         try {
             const payload = {
-                firstName: formData.firstName,
-                middleName: 'tejraj', // Assuming no middle name in the form
+                clientName: formData.firstName,
                 lastName: formData.lastName,
-                city: 'nagpur', // Assuming city is not part of the form
                 dob: formData.dob,
                 pinCode: formData.pincode,
-                state: 'maharashtra', // Assuming state is not part of the form
                 refReferralCode: formData.referralCode,
+                emailId:formData.email
             };
             await API.post('/client/submit_details', { payload: [payload] },
                 {
