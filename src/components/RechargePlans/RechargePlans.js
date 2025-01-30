@@ -9,8 +9,8 @@ const RechargePlans = (props) => {
     return Object.entries(plansData).map(([key, value]) => {
       const [tab] = value
       return {
-        label: tab.title,
-        key: tab.title,
+        label: key,
+        key: key,
         children: <div className="h-[70vh] overflow-y-auto">
           {
             tab?.data?.map((plan, i) => {
@@ -21,7 +21,7 @@ const RechargePlans = (props) => {
                   <p className="benefits">{plan.description}</p>
                 </div>
                 <div className="h-full items-end text-end">
-                  <button className="select-plan-button" onClick={() => props?.onSelect?.(plan)}>Select Plan</button>
+                  <button className="btn" onClick={() => props?.onSelect?.(plan)}>Select Plan</button>
                 </div>
               </div>
             })
@@ -31,25 +31,27 @@ const RechargePlans = (props) => {
     })
   }, [plansData, props])
 
+  console.log('tabData', tabData, plansData)
   return (
     <Modal
       title={<p>Mobile Prepaid Plans</p>}
       style={{
         height: "80vh",
+        width: "80vw",
         top: "20px"
       }}
       className="recharge-plan-modal"
+      wrapClassName="w-full"
       footer={null}
       loading={loading}
       open={open}
       onCancel={(e) => onClose?.(e)}
     >
-      <div className="w-full">
+      <div className="w-full  h-5/6">
         <Tabs
           defaultActiveKey="1"
-          // tabPosition={"top"}
           style={{
-            height: 220,
+            height: "95%"
           }}
           items={tabData}
         />

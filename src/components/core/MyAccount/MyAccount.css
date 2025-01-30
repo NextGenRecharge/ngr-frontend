@@ -57,22 +57,3 @@
   .input-group input[disabled] {
     color: #aaa;
   }
-  
-  /* Button styling */
-  .btn {
-    background-color: #6c18a6;
-    color: #fff;
-    border: none;
-    padding: 10px 0;
-    width: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  .btn:hover {
-    background-color: #5b1291;
-  }
-  
