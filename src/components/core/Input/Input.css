@@ -25,9 +25,7 @@
 }
 
 .check-plan {
-   @apply rounded-r-lg;
-    background-color: var(--primary);
-    /* height: 40px; */
+    @apply rounded-r-lg rounded-l-none !important;
     color: white;
     padding: 6px;
     padding-left: 8px;
@@ -35,7 +33,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
 }
 
 .plan-input {
@@ -52,4 +49,3 @@
     border-color: var(--primary);
     /* box-shadow: 0 0 0 1px var(--primary); */
 }
-

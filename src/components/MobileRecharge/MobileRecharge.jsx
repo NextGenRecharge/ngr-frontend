@@ -9,13 +9,19 @@ import { ReactComponent as TickIcon } from "../../asset/icons/tick.svg"
 import { Button, Modal, Select, Space } from 'antd';
 import API from '../../services/apiService';
 import RechargePlans from '../RechargePlans/RechargePlans';
+import Payment from '../Payment/Payment';
+
+const { Option } = Select;
+
 const MobileRecharge = (props) => {
     const { categoryOptions = {} } = props
     const circleRef = useRef(null)
     const operatorRef = useRef(null)
     const [planLoading, setPlanLoading] = useState(false)
     const [openPlans, setOpenPlans] = useState(false)
+    const [openPayment, setOpenPayment] = useState(false)
     const [plansData, setPlansData] = useState({})
+    const [selectedPlan, setSelectedPlan] = useState({})
     const { control, register, handleSubmit, getFieldState, formState: { errors }, watch, setValue, setFocus } = useForm({
         mode: "onBlur",
         defaultValues: {
@@ -31,8 +37,9 @@ const MobileRecharge = (props) => {
     const onSubmit = data => {
         console.log(data);
         // Handle form submission
+        setOpenPayment(true)
     };
-console.log(operator,"operator")
+
     const radioOptions = [
         { value: 'prepaid', label: 'Prepaid' },
         { value: 'postpaid', label: 'Postpaid', disabled: true }
@@ -72,12 +79,13 @@ console.log(operator,"operator")
     }
 
     function handlePlanSelect(plan) {
+        console.log('plan', plan)
+        setSelectedPlan(plan)
         setValue("plan", plan.price)
         setOpenPlans(false)
     }
 
     const { stateOptions, providerOptions } = useMemo(() => {
-
         return {
             stateOptions: categoryOptions?.state_names?.map?.(item => {
                 return {
@@ -95,7 +103,9 @@ console.log(operator,"operator")
         }
     }, [categoryOptions?.providers, categoryOptions?.state_names])
 
-console.log(stateOptions,"stateOptions",providerOptions)
+
+    const selectedProvider = providerOptions.find(item => item.provider_id === operator) ?? {}
+
     return (
         <div className="recharge-container flex flex-col p-3 w-full h-full bg-transparent rounded-lg">
             {/* <div className="mb-6 text-start font-extrabold">
@@ -156,18 +166,24 @@ console.log(stateOptions,"stateOptions",providerOptions)
                                 showSearch
                                 placeholder="Select Operator"
                                 className='operator h-[45px] block w-full border border-[#ccc] rounded-lg text-primary'
-                                options={providerOptions}
+                                // options={}
                                 optionFilterProp="label"
-                                optionRender={(option) => (
-                                    <Space className='flex gap-2'>
-                                        <div className='h-7 w-7' role="img" aria-label={option.data.provider_name} >
-                                            <img src={option.data.provider_icon} alt='' />
-                                        </div>
-                                   { console.log(option,"---")}
-                                        {option.data.provider_name}
-                                    </Space>
-                                )}
-                            />
+                            >
+                                {
+                                    providerOptions?.map?.(item => {
+                                        return <Option value={item?.value}>
+                                            <div>
+                                                <Space className='flex gap-2'>
+                                                    <div className='h-7 w-7' role="img" aria-label={item?.value} >
+                                                        <img src={item?.provider_icon} alt='' loading="eager" />
+                                                    </div>
+                                                    {item.label}
+                                                </Space>
+                                            </div>
+                                        </Option>
+                                    })
+                                }
+                            </Select>
                         )}
                     />
                     {errors.operator && <span className=" text-sm text-red-600">{errors.operator.message}</span>}
@@ -200,10 +216,11 @@ console.log(stateOptions,"stateOptions",providerOptions)
                         className='h-[45px] cursor-none'
                         register={{ ...register('plan', { required: 'Plan is required' }) }}
                         onCheckPlanClick={handleCheckPlans}
+                        onInputClick={handleCheckPlans}
                     />
                     {errors.plan && <span className=" text-sm text-red-600">{errors.plan.message}</span>}
                 </div>
-                <button type="submit" className="w-full h-12 p-2 mt-1 bg-primary text-secondary rounded-lg">
+                <button type="submit" className="btn w-full h-12 p-2 rounded-lg">
                     Submit
                 </button>
             </form>
@@ -215,6 +232,15 @@ console.log(stateOptions,"stateOptions",providerOptions)
                     plansData={plansData}
                     onClose={() => setOpenPlans(false)}
                     onSelect={handlePlanSelect}
+                />
+            }
+            {
+                openPayment &&
+                <Payment
+                    planData={selectedPlan}
+                    provider={selectedProvider}
+                    open={openPayment}
+                    onClose={() => { setOpenPayment(false) }}
                 />
             }
         </div>

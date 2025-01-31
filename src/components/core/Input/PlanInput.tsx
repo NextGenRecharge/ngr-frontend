@@ -5,6 +5,7 @@ import "./Input.css";
 interface PlanInputProps {
     onChange: (number: string) => void;
     onCheckPlanClick?: Function;
+    onInputClick?: Function;
     register: any;
     className?: string;
     value?: string;
@@ -19,6 +20,7 @@ const PlanInput: React.FC<PlanInputProps> = (props) => {
         register,
         className = '',
         onCheckPlanClick,
+        onInputClick,
         readOnly,
         name = ""
     } = props
@@ -34,12 +36,13 @@ const PlanInput: React.FC<PlanInputProps> = (props) => {
                 value={value}
                 name={props?.name}
                 onChange={handlePlanInput}
-                className={"plan-input h-full " + (readOnly ? "cursor-not-allowed" : "")}
+                className={"plan-input h-full " + (readOnly ? "cursor-pointer" : "")}
                 placeholder="Amount"
                 readOnly={readOnly}
                 {...register}
+                onClick={(e) => onInputClick?.(e)}
             />
-            <div onClick={(e) => onCheckPlanClick?.(e)} className="check-plan h-full">
+            <div onClick={(e) => onCheckPlanClick?.(e)} className="btn check-plan h-full">
                 Check Plans
             </div>
         </div>
