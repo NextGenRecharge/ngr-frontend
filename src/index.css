@@ -7,7 +7,7 @@
   --primary: #5F259F;
   --primary-light: color-mix(in oklab, var(--primary) 90%, white);
   --primary-lighter: color-mix(in oklab, var(--primary) 75%%, white);
-  --primary-lightest: color-mix(in oklab, var(--primary) 50%, white);
+  --primary-lightest: color-mix(in oklab, var(--primary) 10%, white);
   --primary-dark: color-mix(in oklab, var(--primary) 90%, black);
   --primary-darker: color-mix(in oklab, var(--primary) 80%, black);
   --primary-darkest: color-mix(in oklab, var(--primary) 50%, black);

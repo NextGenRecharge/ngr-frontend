@@ -104,7 +104,7 @@ const MobileRecharge = (props) => {
     }, [categoryOptions?.providers, categoryOptions?.state_names])
 
 
-    const selectedProvider = providerOptions.find(item => item.provider_id === operator) ?? {}
+    const selectedProvider = providerOptions?.find?.(item => item.provider_id === operator) ?? {}
 
     return (
         <div className="recharge-container flex flex-col p-3 w-full h-full bg-transparent rounded-lg">

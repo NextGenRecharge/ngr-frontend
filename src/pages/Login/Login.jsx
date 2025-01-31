@@ -45,19 +45,16 @@ const Login = () => {
           },
         ],
       };
-      const checkResponse = await API.post("/client/exist/get_details",
-        checkPayload,
-        { headers: { "Content-Type": "application/json" } }
-      );
+      const checkResponse = await API.post("/client/exist/get_details", checkPayload);
       if (checkResponse?.status === 200) {
-        const data = checkResponse?.data?.response[0]?.isDeviceIdMatch
+        const data = checkResponse?.data?.response?.[0]?.isDeviceIdMatch
         setIsDeviceIdMatch(data);
         const otpPayload = {
           payload: [
             {
               mobileNumber: mobileNumber,
               emailId: "",
-              deviceId: "erueoiwr8493eiurq",
+              deviceId: window.crypto.randomUUID(),
               imeiNumber: "fjydy346365",
               deviceType: "WEB",
               uniqueCodeType: "MOBILE",
@@ -69,27 +66,24 @@ const Login = () => {
             },
           ],
         };
-        const otpResponse = await API.post(
-          "/otp/sent_otp",
-          otpPayload,
-          { headers: { "Content-Type": "application/json" } }
-        );
-        if (otpResponse.status === 200) {
-          navigate("/otp-verify", { state: { number: mobileNumber , isDeviceIdMatch:data} });
+        const otpResponse = await API.post("/otp/sent_otp", otpPayload);
+        if (otpResponse?.status === 200) {
+          navigate("/otp-verify", { state: { number: mobileNumber, isDeviceIdMatch: data } });
         } else {
-                notification.error({
-                  message: "Error",
-                  description: "Failed to verify otp.",
-                  duration: 5,
-                });
-              }
+          notification.error({
+            message: "Error",
+            description: "Failed to verify otp.",
+            duration: 5,
+          });
+        }
       }
     } catch (err) {
-     notification.error({
-             message: "Server Error",
-             description: "Unable to verify otp.",
-             duration: 5,
-           });
+      console.log('err', err)
+      notification.error({
+        message: "Server Error",
+        description: "Unable to verify otp.",
+        duration: 5,
+      });
     } finally {
       setLoading(false);
     }
