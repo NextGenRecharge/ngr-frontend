@@ -32,7 +32,7 @@ const MyReferrals = () => {
     }
 
     return (
-        <div className="w-9/12 max-h-full px-10">
+        <div className="w-9/12 max-h-full py-5">
             <div className="earnings-container">
                 <TitleCard list={referralsData.summary} titleKey="title" subTitleKey="value" />
             </div>
