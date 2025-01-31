@@ -115,7 +115,7 @@ console.log(res,"res")
                 <h2 className='text-2xl '>{props.title}</h2>
                 {/* <div className='text-primary cursor-pointer'>View All</div> */}
             </div>
-            <div className='w-full flex justify-between gap-3'>
+            <div className='w-full flex justify-around gap-3'>
                 {
                     serviceList?.map?.(item => {
                         const Icon = ServiceIconMap[item.service_name]
