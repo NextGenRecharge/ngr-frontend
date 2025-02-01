@@ -6,10 +6,11 @@ import './MobileRecharge.css';
 import PlanInput from '../core/Input/PlanInput';
 import BarSelector from '../core/BarSelector/BarSelector';
 import { ReactComponent as TickIcon } from "../../asset/icons/tick.svg"
-import { Button, Modal, Select, Space } from 'antd';
+import { Button, Modal, notification, Select, Space } from 'antd';
 import API from '../../services/apiService';
 import RechargePlans from '../RechargePlans/RechargePlans';
 import Payment from '../Payment/Payment';
+import PaymentStatus from '../Payment/PaymentStatus';
 
 const { Option } = Select;
 
@@ -20,8 +21,11 @@ const MobileRecharge = (props) => {
     const [planLoading, setPlanLoading] = useState(false)
     const [openPlans, setOpenPlans] = useState(false)
     const [openPayment, setOpenPayment] = useState(false)
+    const [openStatusModal, setOpenStatusModal] = useState(false)
     const [plansData, setPlansData] = useState({})
     const [selectedPlan, setSelectedPlan] = useState({})
+    const [payLoading, setPayLoading] = useState(false)
+    const [createOrderData, setCreateOrderData] = useState({})
     const { control, register, handleSubmit, getFieldState, formState: { errors }, watch, setValue, setFocus } = useForm({
         mode: "onBlur",
         defaultValues: {
@@ -32,12 +36,51 @@ const MobileRecharge = (props) => {
             plan: ''
         }
     });
-    const { phoneNumber, countryCode, type, operator, circle } = watch();
+    const values = watch();
+    const { phoneNumber, countryCode, type, operator, circle } = values
 
-    const onSubmit = data => {
+    const onSubmit = async data => {
         console.log(data);
         // Handle form submission
         setOpenPayment(true)
+        try {
+            setPayLoading(true)
+            const payload = {
+                "payload": [
+                    {
+                        "productId": selectedPlan.productId,
+                        "serviceId": selectedPlan.serviceId,
+                        "amount": selectedPlan.price,
+                        "taxAmount": "0",
+                        "discountAmount": "0",
+                        "finalAmount": selectedPlan.price,
+                        "paymentMode": "UPI",
+                        "consumerNumber": values?.phoneNumber,
+                        "otherDetails": {}
+                    }
+                ]
+            }
+            const response = await API.post("/order/create_order", payload)
+            if (response.data?.response?.[0]) {
+                setCreateOrderData(response.data?.response?.[0] ?? {})
+            } else {
+                notification.error({
+                    message: "Failed to proceed",
+                    description: "",
+                    duration: 4,
+                });
+            }
+            console.log('response', response)
+        } catch (error) {
+            console.log('error', error)
+            notification.error({
+                message: "Something went wrong",
+                description: "",
+                duration: 4,
+            });
+        } finally {
+            setPayLoading(false)
+        }
     };
 
     const radioOptions = [
@@ -103,8 +146,13 @@ const MobileRecharge = (props) => {
         }
     }, [categoryOptions?.providers, categoryOptions?.state_names])
 
-
     const selectedProvider = providerOptions?.find?.(item => item.provider_id === operator) ?? {}
+
+    function paymentCallback(paymentData) {
+        console.log('paymentData', paymentData)
+        setOpenPayment(false)
+        setOpenStatusModal(true)
+    }
 
     return (
         <div className="recharge-container flex flex-col p-3 w-full h-full bg-transparent rounded-lg">
@@ -221,7 +269,7 @@ const MobileRecharge = (props) => {
                     {errors.plan && <span className=" text-sm text-red-600">{errors.plan.message}</span>}
                 </div>
                 <button type="submit" className="btn w-full h-12 p-2 rounded-lg">
-                    Submit
+                    Proceed to pay
                 </button>
             </form>
             {
@@ -235,12 +283,21 @@ const MobileRecharge = (props) => {
                 />
             }
             {
-                openPayment &&
                 <Payment
+                    loading={payLoading}
                     planData={selectedPlan}
                     provider={selectedProvider}
                     open={openPayment}
                     onClose={() => { setOpenPayment(false) }}
+                    values={values}
+                    createOrderData={createOrderData}
+                    paymentCallback={paymentCallback}
+                />
+            }
+            {
+                <PaymentStatus
+                    open={openStatusModal}
+                    onClose={() => { setOpenStatusModal(false) }}
                 />
             }
         </div>

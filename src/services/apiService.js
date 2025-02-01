@@ -1,12 +1,13 @@
 import axios from 'axios';
 import LocalStorageService from './localstorageservice';
+import { getToken } from '../utils/utils';
 
-const   API = axios.create({
+const API = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   withCredentials: false, // Send cookies with requests (if needed)
   headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin':'*'
+    'Access-Control-Allow-Origin': '*'
   },
 });
 
@@ -15,7 +16,7 @@ const localStorageService = LocalStorageService.getService();
 // Request interceptor
 API.interceptors.request.use(
   (config) => {
-    const token = localStorageService.getAccessToken();
+    const token = getToken();
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
     }
