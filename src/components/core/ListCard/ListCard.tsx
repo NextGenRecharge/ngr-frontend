@@ -5,6 +5,7 @@ interface IListCardProps {
     renderTitle?: (item: any, index: number) => JSX.Element;
     renderFooter?: (item: any, index: number) => JSX.Element;
     img?: ReactNode;
+    emptyListComp?: ReactNode;
     itemClass?: string
     className?: string
     titleClass?: string
@@ -14,9 +15,9 @@ interface IListCardProps {
 const ListCard = (props: IListCardProps) => {
     const { list = [] } = props
     return (
-        <div className={`flex flex-col gap-4 ${props?.className ?? ""}`}>
+        <div className={`flex flex-col justify-center items-center gap-4 ${props?.className ?? ""}`}>
             {
-                list?.map((item, index) => {
+                list.length > 0 ? list?.map((item, index) => {
                     return (
                         <div key={index} className={`px-2 py-3 rounded-lg border border-gray-300 ${props?.itemClass ?? ""}`}>
                             {
@@ -44,6 +45,7 @@ const ListCard = (props: IListCardProps) => {
                         </div>
                     )
                 })
+                    : <div> {props?.emptyListComp ?? "No data avaiable"}</div>
             }
         </div>
     )
